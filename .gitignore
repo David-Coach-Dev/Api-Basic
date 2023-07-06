@@ -1,5 +1,6 @@
 # Logs
 .lh
+.vscode
 dist
 logs
 *.log
@@ -77,6 +78,7 @@ web_modules/
 # dotenv environment variable files
 .env
 .env.development.local
+.production.env
 .env.test.local
 .env.production.local
 .env.local
