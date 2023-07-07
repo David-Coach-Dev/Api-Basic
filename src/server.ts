@@ -1,8 +1,10 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import { UserRouter } from './routers/user.router';
+import "reflect-metadata";
+import { UserRouter } from './user/router/user.router';
 import { ConfigServer } from './config/config';
+import { DataSource } from 'typeorm';
 
 class ServerDc extends ConfigServer{
   public app: express.Application = express();
@@ -12,6 +14,7 @@ class ServerDc extends ConfigServer{
     super();
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
+    this.dbConnection();
     this.app.use(morgan('dev'));
     this.app.use(cors());
 
@@ -23,6 +26,15 @@ class ServerDc extends ConfigServer{
     return [new UserRouter().router];
   };
 
+  async dbConnection(): Promise<void> {
+    try {
+        await new DataSource(this.typeORMConfig).initialize();
+        console.log(`🚀  Database Connected with dc_back_db -> 😁👍 `);
+    } catch (error) {
+        console.log(`☠️ Database Connection Error: ${error}` );
+    }
+  }
+
   public listen() {
     this.app.listen(this.port, () => {
       console.log(`Server is running on https://localhost:${this.port}`);
@@ -31,4 +43,4 @@ class ServerDc extends ConfigServer{
 
 }
 
-new ServerDc();
+const server = new ServerDc();

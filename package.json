@@ -29,6 +29,8 @@
     "@types/morgan": "^1.9.4",
     "@types/node": "^20.3.3",
     "concurrently": "^8.2.0",
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "reflect-metadata": "^0.1.13",
+    "swagger-jsdoc": "6.0.0"
   }
 }
