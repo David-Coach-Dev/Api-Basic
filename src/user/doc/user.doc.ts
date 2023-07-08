@@ -10,7 +10,7 @@
  *          description: the auto-generated id of task
  *        user:
  *          type: string
- *          description: the name of the task
+ *          description: the name of the user
  *      required:
  *        - user
  *      example:

@@ -7,14 +7,14 @@
  *      properties:
  *        id:
  *          type: string
- *          description: the auto-generated id of task
+ *          description: the auto-generated id of rol
  *        rol:
  *          type: string
- *          description: the name of the task
+ *          description: the name of the rol
  *      required:
  *        - rol
  *      example:
- *        rol: Dc Dev
+ *        rol: Admin
  *    NotFound:
  *      type: object
  *      properties:
@@ -39,14 +39,7 @@
  *      required: true
  *      schema:
  *        type: string
- *      description: the task id
- */
-
-/**
- * @swagger
- * tags:
- *  name: Api
- *  description: Api endpoint
+ *      description: the rol id
  */
 
 /**
@@ -65,7 +58,7 @@
  *              schema:
  *                type: array
  *                items:
- *                  $ref: '#/components/schemas/User'
+ *                  $ref: '#/components/schemas/rol'
  *        404:
  *          description: Not Found
  *          content:
