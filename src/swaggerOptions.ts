@@ -13,5 +13,6 @@ export const swaggerOptions = {
       }
     ],
   },
-  apis: ["./src/user/controller/user.controller.ts"],
+  //apis: ["./src/user/controller/user.controller.ts"],
+  apis: ["./src/doc/swagger.doc.ts"],
 };
