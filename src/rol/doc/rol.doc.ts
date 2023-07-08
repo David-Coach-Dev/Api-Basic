@@ -2,19 +2,19 @@
  * @swagger
  * components:
  *  schemas:
- *    User:
+ *    rol:
  *      type: object
  *      properties:
  *        id:
  *          type: string
  *          description: the auto-generated id of task
- *        user:
+ *        rol:
  *          type: string
  *          description: the name of the task
  *      required:
- *        - user
+ *        - rol
  *      example:
- *        user: Dc Dev
+ *        rol: Dc Dev
  *    NotFound:
  *      type: object
  *      properties:
@@ -44,9 +44,16 @@
 
 /**
  * @swagger
- *  /user:
+ * tags:
+ *  name: Api
+ *  description: Api endpoint
+ */
+
+/**
+ * @swagger
+ *  /rol:
  *    get:
- *      tags: [user]
+ *      tags: [rol]
  *      summary: Get all users
  *      description:
  *        Get all users
