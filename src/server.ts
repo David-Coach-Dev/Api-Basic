@@ -2,19 +2,17 @@ import cors from 'cors';
 import express from 'express';
 import morgan from 'morgan';
 import "reflect-metadata";
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUI from 'swagger-ui-express';
 import { DataSource } from 'typeorm';
 import { ConfigServer } from './config/config';
+import { swaggerDocs } from './swaggerdocs';
 import { UserRouter } from './user/router/user.router';
-import swaggerUI from 'swagger-ui-express';
-import swaggerJSDoc from 'swagger-jsdoc';
-import { swaggerOptions } from './swaggerOptions';
-
-
 
 class ServerDc extends ConfigServer{
   public app: express.Application = express();
   private port: number = this.getNumberEnv('PORT');
-  public swaggerSpec = swaggerJSDoc(swaggerOptions);
+  public swaggerSpec = swaggerJSDoc(swaggerDocs);
   constructor() {
     super();
     this.app.use(express.json());
