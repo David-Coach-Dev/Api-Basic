@@ -1,18 +1,20 @@
+import cors from 'cors';
 import express from 'express';
 import morgan from 'morgan';
-import cors from 'cors';
 import "reflect-metadata";
-import { UserRouter } from './user/router/user.router';
-import { ConfigServer } from './config/config';
 import { DataSource } from 'typeorm';
+import { ConfigServer } from './config/config';
+import { UserRouter } from './user/router/user.router';
 import swaggerUI from 'swagger-ui-express';
-import { swaggerSpec } from './doc/server/docSawggerServer';
-import { DocsRouter } from './doc/router/DocsRouter';
+import swaggerJSDoc from 'swagger-jsdoc';
+import { swaggerOptions } from './swaggerOptions';
+
+
 
 class ServerDc extends ConfigServer{
   public app: express.Application = express();
   private port: number = this.getNumberEnv('PORT');
-
+  public swaggerSpec = swaggerJSDoc(swaggerOptions);
   constructor() {
     super();
     this.app.use(express.json());
@@ -20,15 +22,14 @@ class ServerDc extends ConfigServer{
     this.dbConnection();
     this.app.use(morgan('dev'));
     this.app.use(cors());
-    this.app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
     this.app.use('/api', this.routers());
+    this.app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(this.swaggerSpec));
     this.listen();
   }
 
   routers(): Array<express.Router> {
     return [
       new UserRouter().router,
-      new DocsRouter().router,
     ];
   };
 
