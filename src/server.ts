@@ -6,13 +6,13 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express';
 import { DataSource } from 'typeorm';
 import { ConfigServer } from './config/config';
-import { swaggerDocs } from './swaggerdocs';
+import { swaggerOptions } from './config/swaggerOptions';
 import { UserRouter } from './user/router/user.router';
 
 class ServerDc extends ConfigServer{
   public app: express.Application = express();
   private port: number = this.getNumberEnv('PORT');
-  public swaggerSpec = swaggerJSDoc(swaggerDocs);
+  public swaggerSpec = swaggerJSDoc(swaggerOptions);
   constructor() {
     super();
     this.app.use(express.json());

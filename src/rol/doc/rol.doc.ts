@@ -15,31 +15,6 @@
  *        - rol
  *      example:
  *        rol: Admin
- *    NotFound:
- *      type: object
- *      properties:
- *        msg:
- *          type: string
- *          description: Not found
- *      example:
- *        msg: not found
- *    NotServer:
- *      type: object
- *      properties:
- *        msg:
- *          type: string
- *          description: Error in the server
- *      example:
- *        msg: Error in the server
- *
- *  parameters:
- *    UserId:
- *      in: path
- *      name: id
- *      required: true
- *      schema:
- *        type: string
- *      description: the rol id
  */
 
 /**
