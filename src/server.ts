@@ -1,5 +1,6 @@
-import cors from 'cors';
 import express from 'express';
+import helmet from 'helmet';
+import cors from 'cors';
 import morgan from 'morgan';
 import "reflect-metadata";
 import swaggerJSDoc from 'swagger-jsdoc';
@@ -18,6 +19,7 @@ class ServerDc extends ConfigServer{
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.dbConnection();
+    this.app.use(helmet());
     this.app.use(morgan('dev'));
     this.app.use(cors());
     this.app.use('/api', this.routers());
