@@ -7,7 +7,7 @@ import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express';
 import { DataSource } from 'typeorm';
 import { ConfigServer } from './config/config';
-import { swaggerOptions } from './config/swaggerOptions';
+import { swaggerOptions } from './config/swagger/swaggerOptions';
 import { UserRouter } from './user/router/user.router';
 
 class ServerDc extends ConfigServer{

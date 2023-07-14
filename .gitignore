@@ -5,6 +5,7 @@ dist
 public
 mysql/
 dist
+respose
 logs
 *.log
 npm-debug.log*
