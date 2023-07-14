@@ -1,6 +1,7 @@
 # Logs
 .lh
 .vscode
+dist
 mysql/
 dist
 logs
