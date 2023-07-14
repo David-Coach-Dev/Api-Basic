@@ -2,9 +2,9 @@
   "name": "Node-OpenAI-ChatGPT",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "public/server.js",
   "scripts": {
-    "start": "pnpm build && node dist/server.js",
+    "start": "pnpm build && node public/server.js",
     "build": "tsc && echo \"☑️  Proceso realizado con éxito.\"",
     "dev": "tsc && concurrently \"tsc -w\" \"nodemon dist/server.js\"",
     "watch": "tsc && concurrently \"tsc -w\" \"node --watch dist/server.js\"",

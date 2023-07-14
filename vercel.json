@@ -1,8 +1,12 @@
 {
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/node"
+      "src": "public/server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["public/**/*.js", "public/*.js"],
+        "distDir": "public"
+      }
     }
   ],
   "routes": [
@@ -13,6 +17,10 @@
         "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
       },
       "router": [
+        {
+          "src": "/",
+          "dest": "/api-docs"
+        },
         {
           "src": "/api/(.*)",
           "dest": "/api"
