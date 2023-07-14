@@ -1,8 +1,16 @@
 {
+  "name": "api-back-v-1",
   "version": 2,
+  "installCommand": "npm install",
+  "trailingSlash": false,
+  "public": true,
+  "env": {
+    "MY_KEY": "this is the value",
+    "SECRET": "@my-secret-name"
+  },
   "builds": [
     {
-      "src": ["/src/**/*.ts", "src/*.ts"],
+      "src": ["package.json"],
       "use": "@vercel/node"
     }
   ],
@@ -12,7 +20,7 @@
       "methods": [
         "GET, POST, PUT, DELETE"
       ],
-      "dest": "public/api/server.ts",
+      "dest": "api/server.ts",
       "headers": {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE",
@@ -21,7 +29,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "src/$1"
+      "dest": "api/$1"
     }
   ]
 }
