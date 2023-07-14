@@ -19,15 +19,7 @@
       "router": [
         {
           "src": "/",
-          "dest": "/api-docs"
-        },
-        {
-          "src": "/api/(.*)",
-          "dest": "/api"
-        },
-        {
-          "src": "/api-docs",
-          "dest": "/api-docs"
+          "dest": "public/server.js"
         }
       ]
     }
