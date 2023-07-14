@@ -10,7 +10,7 @@
   },
   "builds": [
     {
-      "src": ["package.json"],
+      "src": ["src/server.ts"],
       "use": "@vercel/node"
     }
   ],
