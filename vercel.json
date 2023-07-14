@@ -1,29 +1,27 @@
 {
-  "name": "api-back-v-1",
-  "version": 2,
-  "installCommand": "pnpm install",
   "builds": [
     {
-      "src": "src/server.ts",
+      "src": "package.json",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      "src": "/api/.*",
-      "methods": [
-        "GET, POST, PUT, DELETE"
-      ],
-      "dest": "api/server.ts",
       "headers": {
         "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE",
-        "Access-Control-Allow-Headers": "Content-Type"
-      }
-    },
-    {
-      "src": "/(.*)",
-      "dest": "api/$1"
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
+      },
+      "router": [
+        {
+          "src": "/api/(.*)",
+          "dest": "/api"
+        },
+        {
+          "src": "/api-docs",
+          "dest": "/api-docs"
+        }
+      ]
     }
   ]
 }
