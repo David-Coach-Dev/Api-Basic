@@ -6,9 +6,9 @@ import "reflect-metadata";
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express';
 import { DataSource } from 'typeorm';
-import { ConfigServer } from './config/config';
 import { swaggerOptions } from './config/swagger/swaggerOptions';
 import { UserRouter } from './user/router/user.router';
+import { ConfigServer } from './config/config/config';
 
 class ServerDc extends ConfigServer{
   public app: express.Application = express();
