@@ -2,6 +2,7 @@
 .lh
 .vscode
 dist
+public
 mysql/
 dist
 logs
