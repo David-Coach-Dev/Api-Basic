@@ -1,16 +1,10 @@
 {
   "name": "api-back-v-1",
   "version": 2,
-  "installCommand": "npm install",
-  "trailingSlash": false,
-  "public": true,
-  "env": {
-    "MY_KEY": "this is the value",
-    "SECRET": "@my-secret-name"
-  },
+  "installCommand": "pnpm install",
   "builds": [
     {
-      "src": ["src/server.ts"],
+      "src": "src/server.ts",
       "use": "@vercel/node"
     }
   ],
