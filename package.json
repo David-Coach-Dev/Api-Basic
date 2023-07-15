@@ -1,12 +1,12 @@
 {
-  "name": "Node-OpenAI-ChatGPT",
+  "name": "api-basic",
   "version": "1.0.0",
   "description": "",
-  "main": "public/server.js",
+  "main": "dist/server.js",
   "scripts": {
-    "start": "pnpm build && node public/server.js",
-    "build": "tsc && echo \"☑️  Proceso realizado con éxito.\"",
-    "dev": "tsc && concurrently \"tsc -w\" \"nodemon public/server.js\"",
+    "start": "pnpm build && node dist/server.js",
+    "build": "tsc",
+    "dev": "tsc && concurrently \"tsc -w\" \"nodemon dist/server.js\"",
     "watch": "tsc && concurrently \"tsc -w\" \"node --watch dist/server.js\"",
     "prod": "SET NODE_ENV=production && pnpm start",
     "publish": "pnpm build && vercel --prod && echo \"☑️  Por fin.\"",

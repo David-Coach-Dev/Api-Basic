@@ -1,27 +1,19 @@
 {
   "builds": [
     {
-      "src": "public/server.js",
+      "src": "package.json",
       "use": "@vercel/node",
       "config": {
-        "includeFiles": ["public/**/*.js", "public/*.js"],
-        "distDir": "public"
+        "includeFiles": [
+          "dist/**/*.js"
+        ]
       }
     }
   ],
   "routes": [
     {
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept"
-      },
-      "router": [
-        {
-          "src": "/",
-          "dest": "public/server.js"
-        }
-      ]
+      "src": "/",
+      "dest": "dist/server.js"
     }
   ]
 }
