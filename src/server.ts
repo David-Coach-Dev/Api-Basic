@@ -6,9 +6,11 @@ import "reflect-metadata";
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express';
 import { DataSource } from 'typeorm';
-import { swaggerOptions } from './config/swagger/swaggerOptions';
 import { UserRouter } from './user/router/user.router';
 import { ConfigServer } from './config/config/config';
+import { StartRouter } from './start/router/start.router';
+import { swaggerOptions } from './config/swagger/swaggerOptions';
+import { RaizRouter } from './raiz/router/raiz.router';
 
 class ServerDc extends ConfigServer{
   public app: express.Application = express();
@@ -22,16 +24,31 @@ class ServerDc extends ConfigServer{
     this.app.use(helmet());
     this.app.use(morgan('dev'));
     this.app.use(cors());
-    this.app.use('/api', this.routers());
-    this.app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(this.swaggerSpec));
+    this.app.use('/', this.start());
+    this.app.use('/api', this.api());
+    this.app.use('/api-docs', this.swagger());
     this.listen();
   }
 
-  routers(): Array<express.Router> {
+  api(): Array<express.Router> {
     return [
       new UserRouter().router,
+      new RaizRouter().router,
     ];
   };
+  start(): Array<express.Router> {
+    return [
+      new StartRouter().router,
+    ];
+  };
+
+  swagger(): Array<express.Router> {
+    const router = express.Router();
+    return [
+      router.use('/', swaggerUI.serve),
+      router.get('/', swaggerUI.setup(this.swaggerSpec))
+    ];
+  }
 
   async dbConnection(): Promise<void> {
     try {
