@@ -1229,8 +1229,8 @@ packages:
       - openapi-types
     dev: true
 
-  /swagger-ui-dist@5.1.0:
-    resolution: {integrity: sha512-c1KmAjuVODxw+vwkNLALQZrgdlBAuBbr2xSPfYrJgseEi7gFKcTvShysPmyuDI4kcUa1+5rFpjWvXdusKY74mg==}
+  /swagger-ui-dist@5.1.2:
+    resolution: {integrity: sha512-2n5+kcC4X1FZdmPtVWxNwnJkwTwwM4lGC+Tg8XBLaqbUfQeJj4iiXGEP83WNI0wTe0vhjWhYcYSB22AOSudv9Q==}
     dev: true
 
   /swagger-ui-express@5.0.0(express@4.18.2):
@@ -1240,7 +1240,7 @@ packages:
       express: '>=4.0.0 || >=5.0.0-beta'
     dependencies:
       express: 4.18.2
-      swagger-ui-dist: 5.1.0
+      swagger-ui-dist: 5.1.2
     dev: true
 
   /thenify-all@1.6.0:
