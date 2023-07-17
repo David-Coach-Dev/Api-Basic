@@ -13,7 +13,14 @@
   "routes": [
     {
       "src": "/",
-      "dest": "dist/server.js"
+      "dest": "/api"
     }
+  ],
+  "ignoreFiles": [
+    "node_modules",
+    "response",
+    ".hl",
+    ".vscode",
+    "mysql"
   ]
 }
