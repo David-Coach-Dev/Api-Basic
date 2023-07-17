@@ -1,21 +1,19 @@
 {
   "builds": [
     {
-      "src": "package.json",
-      "use": "@vercel/node"
+      "src": "dist/server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "dist/**/**/*.js"
+        ]
+      }
     }
   ],
   "routes": [
     {
-      "src": "/",
-      "dest": "/api"
+      "src": "/.*",
+      "dest": "dist/server.js"
     }
-  ],
-  "ignoreFiles": [
-    "node_modules",
-    "response",
-    ".hl",
-    ".vscode",
-    "mysql"
   ]
 }

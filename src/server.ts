@@ -53,7 +53,7 @@ class ServerDc extends ConfigServer{
   async dbConnection(): Promise<void> {
     try {
         await new DataSource(this.typeORMConfig).initialize();
-        console.log(`✅ Database Connected with 🚀 dc_back_db.`);
+        console.log(`✅ Database Connected with 🚀 dc_back_db .`);
     } catch (error) {
         console.log(`☠️  Database Connection Error: ${error}.` );
     }
