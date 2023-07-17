@@ -1,0 +1,21 @@
+{
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/api"
+    }
+  ],
+  "ignoreFiles": [
+    "node_modules",
+    "response",
+    ".hl",
+    ".vscode",
+    "mysql"
+  ]
+}
