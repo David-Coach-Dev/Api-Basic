@@ -16,7 +16,8 @@ import { handleCors } from './shared/middleware/whilelist.middleware';
 class ServerDc extends ConfigServer{
   public app: express.Application = express();
   private port: number = this.getNumberEnv('PORT');
-  public swaggerSpec = swaggerJSDoc(swaggerOptions);
+  private CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
+  private swaggerSpec = swaggerJSDoc(swaggerOptions);
   constructor() {
     super();
     this.app.use(express.json());
@@ -28,7 +29,7 @@ class ServerDc extends ConfigServer{
     this.app.use(cors());
     this.app.use('/', this.start());
     this.app.use('/api', this.api());
-    this.app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(this.swaggerSpec));
+    this.app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(this.swaggerSpec, { customCss: this.CSS_URL }));
     this.listen();
   }
 

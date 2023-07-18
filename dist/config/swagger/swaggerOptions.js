@@ -11,11 +11,11 @@ exports.swaggerOptions = {
         },
         servers: [
             {
-                url: 'https://localhost:8000/api',
+                url: 'http://localhost:8000/api',
                 description: 'The server api environment development',
             },
             {
-                url: 'https://sismadeq.com/api',
+                url: 'https://api-basic.vercel.app/',
                 description: 'The server api environment production',
             }
         ],
