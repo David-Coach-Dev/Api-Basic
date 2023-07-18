@@ -31,6 +31,7 @@ class ServerDc extends config_1.ConfigServer {
         super();
         this.app = (0, express_1.default)();
         this.port = this.getNumberEnv('PORT');
+        this.cssUrl = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
         this.swaggerSpec = (0, swagger_jsdoc_1.default)(swaggerOptions_1.swaggerOptions);
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: true }));
@@ -61,7 +62,7 @@ class ServerDc extends config_1.ConfigServer {
         const router = express_1.default.Router();
         return [
             router.use('/', swagger_ui_express_1.default.serve),
-            router.get('/', swagger_ui_express_1.default.setup(this.swaggerSpec))
+            router.get('/', swagger_ui_express_1.default.setup(this.swaggerSpec, { customCssUrl: this.cssUrl }))
         ];
     }
     dbConnection() {
