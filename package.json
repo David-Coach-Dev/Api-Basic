@@ -23,7 +23,7 @@
     "email": "dcdevtk@gmail.com",
     "url": "https://dcdev.tk"
   },
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "class-validator": "^0.14.0",
     "cors": "^2.8.5",
