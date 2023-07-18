@@ -1,10 +1,6 @@
 import { Handler } from 'express';
 
 const whitelist = [
-  'http://localhost:1111',
-  'http://localhost:2222',
-  'http://localhost:3333',
-  'http://localhost:4444',
   'https://localhost:8000',
   'https://api-basic.vercel.app'
 ];
