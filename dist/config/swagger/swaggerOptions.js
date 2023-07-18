@@ -15,7 +15,7 @@ exports.swaggerOptions = {
                 description: 'The server api environment development',
             },
             {
-                url: 'https://api-basic.vercel.app/',
+                url: 'https://api-basic.vercel.app/api',
                 description: 'The server api environment production',
             }
         ],
