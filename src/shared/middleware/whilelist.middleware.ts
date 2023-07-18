@@ -56,4 +56,5 @@ function setAllowCredentials(res: any) {
 
 function setResponseContentType(res: any) {
   res.set('Content-Type', 'application/json; charset=utf-8');
+  res.set('Content-Type', 'text/plain; charset=utf-8');
 }
