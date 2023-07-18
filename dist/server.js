@@ -42,7 +42,7 @@ class ServerDc extends config_1.ConfigServer {
         this.app.use((0, cors_1.default)());
         this.app.use('/', this.start());
         this.app.use('/api', this.api());
-        this.app.use('/api-docs', this.swagger());
+        this.app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(this.swaggerSpec, { customCssUrl: this.cssUrl }));
         this.listen();
     }
     api() {
@@ -58,13 +58,6 @@ class ServerDc extends config_1.ConfigServer {
         ];
     }
     ;
-    swagger() {
-        const router = express_1.default.Router();
-        return [
-            router.use('/', swagger_ui_express_1.default.serve),
-            router.get('/', swagger_ui_express_1.default.setup(this.swaggerSpec, { customCssUrl: this.cssUrl }))
-        ];
-    }
     dbConnection() {
         return __awaiter(this, void 0, void 0, function* () {
             try {

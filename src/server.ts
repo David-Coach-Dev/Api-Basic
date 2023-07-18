@@ -29,7 +29,7 @@ class ServerDc extends ConfigServer{
     this.app.use(cors());
     this.app.use('/', this.start());
     this.app.use('/api', this.api());
-    this.app.use('/api-docs', this.swagger());
+    this.app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(this.swaggerSpec, { customCssUrl: this.cssUrl }));
     this.listen();
   }
 
@@ -44,14 +44,6 @@ class ServerDc extends ConfigServer{
       new StartRouter().router,
     ];
   };
-
-  swagger(): Array<express.Router> {
-    const router = express.Router();
-    return [
-      router.use('/', swaggerUI.serve),
-      router.get('/', swaggerUI.setup(this.swaggerSpec, { customCssUrl: this.cssUrl }))
-    ];
-  }
 
   async dbConnection(): Promise<void> {
     try {
