@@ -12,19 +12,19 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
 const helmet_1 = __importDefault(require("helmet"));
-const cors_1 = __importDefault(require("cors"));
 const morgan_1 = __importDefault(require("morgan"));
 require("reflect-metadata");
 const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const typeorm_1 = require("typeorm");
-const user_router_1 = require("./user/router/user.router");
 const config_1 = require("./config/config/config");
-const start_router_1 = require("./start/router/start.router");
 const swaggerOptions_1 = require("./config/swagger/swaggerOptions");
 const raiz_router_1 = require("./raiz/router/raiz.router");
+const start_router_1 = require("./start/router/start.router");
+const user_router_1 = require("./user/router/user.router");
 class ServerDc extends config_1.ConfigServer {
     constructor() {
         super();

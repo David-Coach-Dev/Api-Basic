@@ -1,17 +1,16 @@
+import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
-import cors from 'cors';
 import morgan from 'morgan';
 import "reflect-metadata";
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express';
 import { DataSource } from 'typeorm';
-import { UserRouter } from './user/router/user.router';
 import { ConfigServer } from './config/config/config';
-import { StartRouter } from './start/router/start.router';
 import { swaggerOptions } from './config/swagger/swaggerOptions';
 import { RaizRouter } from './raiz/router/raiz.router';
-import { handleCors } from './shared/middleware/whilelist.middleware';
+import { StartRouter } from './start/router/start.router';
+import { UserRouter } from './user/router/user.router';
 
 class ServerDc extends ConfigServer{
   public app: express.Application = express();
