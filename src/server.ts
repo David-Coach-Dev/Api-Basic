@@ -27,9 +27,9 @@ class ServerDc extends ConfigServer{
     this.app.use(morgan('dev'));
     this.app.use(handleCors);
     this.app.use(cors());
+    this.app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(this.swaggerSpec, { customCssUrl: this.cssUrl }));
     this.app.use('/', this.start());
     this.app.use('/api', this.api());
-    this.app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(this.swaggerSpec, { customCssUrl: this.cssUrl }));
     this.listen();
   }
 

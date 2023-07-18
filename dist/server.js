@@ -40,9 +40,9 @@ class ServerDc extends config_1.ConfigServer {
         this.app.use((0, morgan_1.default)('dev'));
         this.app.use(whilelist_middleware_1.handleCors);
         this.app.use((0, cors_1.default)());
+        this.app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(this.swaggerSpec, { customCssUrl: this.cssUrl }));
         this.app.use('/', this.start());
         this.app.use('/api', this.api());
-        this.app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(this.swaggerSpec, { customCssUrl: this.cssUrl }));
         this.listen();
     }
     api() {
