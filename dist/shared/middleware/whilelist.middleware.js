@@ -3,7 +3,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.handleCors = void 0;
 const whitelist = [
     'http://localhost:8000',
-    'https://api-basic.vercel.app'
+    'https://api-basic.vercel.app',
+    'https://api-basic.vercel.app/api/user'
 ];
 const corsOptions = {
     allowOrigin: createWhitelist(whitelist),
@@ -16,14 +17,20 @@ function createWhitelist(whitelist) {
     return (url) => matches.some(match => match(url));
 }
 const handleCors = (req, res, next) => {
-    setAllowOrigin(req, res);
-    setAllowMethods(res);
-    setAllowHeaders(res);
-    setAllowCredentials(res);
-    setResponseContentType(res);
+    if (isValidScheme(req)) {
+        setAllowOrigin(req, res);
+        setAllowMethods(res);
+        setAllowHeaders(res);
+        setAllowCredentials(res);
+        setResponseContentType(res);
+    }
     next();
 };
 exports.handleCors = handleCors;
+function isValidScheme(req) {
+    const scheme = req.protocol;
+    return scheme === 'http' || scheme === 'https';
+}
 function setAllowOrigin(req, res) {
     const origin = req.headers['origin'];
     if (corsOptions.allowOrigin && corsOptions.allowOrigin(origin)) {

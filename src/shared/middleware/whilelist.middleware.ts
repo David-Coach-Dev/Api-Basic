@@ -2,7 +2,8 @@ import { Handler } from 'express';
 
 const whitelist = [
   'http://localhost:8000',
-  'https://api-basic.vercel.app'
+  'https://api-basic.vercel.app',
+  'https://api-basic.vercel.app/api/user'
 ];
 
 const corsOptions = {
@@ -18,13 +19,20 @@ function createWhitelist(whitelist: string[]): (url: string) => boolean {
 }
 
 export const handleCors: Handler = (req, res, next) => {
-  setAllowOrigin(req, res);
-  setAllowMethods(res);
-  setAllowHeaders(res);
-  setAllowCredentials(res);
-  setResponseContentType(res);
+  if (isValidScheme(req)) {
+    setAllowOrigin(req, res);
+    setAllowMethods(res);
+    setAllowHeaders(res);
+    setAllowCredentials(res);
+    setResponseContentType(res);
+  }
   next();
 };
+
+function isValidScheme(req: any): boolean {
+  const scheme = req.protocol;
+  return scheme === 'http' || scheme === 'https';
+}
 
 function setAllowOrigin(req: any, res: any) {
   const origin = req.headers['origin'];
