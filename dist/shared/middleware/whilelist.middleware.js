@@ -57,7 +57,50 @@ function setAllowCredentials(res) {
     }
 }
 function setResponseContentType(res) {
-    res.set('Content-Type', 'application/json; charset=utf-8');
-    res.set('Content-Type', 'text/plain; charset=utf-8');
-    res.set('Content-Type', 'text/html; charset=utf-8');
+    res.set('Content-Type', 'application/json; charset=utf-8, text/plain; charset=utf-8, text/html; charset=utf-8', 'text/xml; charset=utf-8', 'text/css; charset=utf-8', 'text/javascript; charset=utf-8', 'image/svg+xml; charset=utf-8');
+    function setResponseContentType(res) {
+        const contentTypes = [
+            'application/json; charset=utf-8',
+            'text/plain; charset=utf-8',
+            'text/html; charset=utf-8',
+            'text/xml; charset=utf-8',
+            'text/css; charset=utf-8',
+            'text/javascript; charset=utf-8',
+            'image/svg+xml; charset=utf-8',
+            'application/octet-stream',
+            'application/pdf',
+            'application/zip',
+            'application/x-www-form-urlencoded',
+            'multipart/form-data',
+            'application/graphql',
+            'application/ld+json',
+            'application/rss+xml',
+            'application/atom+xml',
+            'application/xhtml+xml',
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            'application/vnd.ms-excel',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            'application/msword',
+            'application/vnd.google-earth.kml+xml',
+            'application/vnd.google-earth.kmz',
+            'application/x-msdownload',
+            'application/x-shockwave-flash',
+            'audio/mpeg',
+            'audio/x-wav',
+            'audio/x-m4a',
+            'image/jpeg',
+            'image/png',
+            'image/gif',
+            'image/tiff',
+            'image/x-icon',
+            'video/mpeg',
+            'video/mp4',
+            'video/quicktime',
+            'video/x-flv',
+            'video/x-msvideo',
+            'video/x-ms-wmv'
+        ];
+        const contentTypeHeader = contentTypes.join(', ');
+        res.set('Content-Type', contentTypeHeader);
+    }
 }
