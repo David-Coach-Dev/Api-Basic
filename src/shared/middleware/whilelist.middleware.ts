@@ -6,6 +6,7 @@ const whitelist = [
   'http://localhost:3333',
   'http://localhost:4444',
   'https://localhost:8000',
+  'https://api-basic.vercel.app'
 ];
 
 const corsOptions = {
