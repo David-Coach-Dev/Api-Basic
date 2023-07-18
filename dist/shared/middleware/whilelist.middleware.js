@@ -3,8 +3,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.handleCors = void 0;
 const whitelist = [
     'http://localhost:8000',
+    'http://localhost:8000/api',
     'https://api-basic.vercel.app',
-    'https://api-basic.vercel.app/api/user',
+    'https://api-basic.vercel.app/api'
 ];
 const corsOptions = {
     allowOrigin: generateWhitelist(whitelist),
@@ -19,7 +20,9 @@ function generateWhitelist(whitelist) {
 const handleCors = (req, res, next) => {
     if (isValidScheme(req)) {
         if (!isOriginAllowed(req)) {
-            res.status(403).send('Origin not allowed');
+            res.status(403).json({
+                error: "Origin not allowed"
+            });
             return;
         }
         setAllowOrigin(req, res);

@@ -9,8 +9,9 @@ interface CorsOptions {
 
 const whitelist = [
   'http://localhost:8000',
+  'http://localhost:8000/api',
   'https://api-basic.vercel.app',
-  'https://api-basic.vercel.app/api/user',
+  'https://api-basic.vercel.app/api'
 ];
 
 const corsOptions: CorsOptions = {
@@ -28,7 +29,9 @@ function generateWhitelist(whitelist: string[]): (url: string) => boolean {
 export const handleCors = (req: Request, res: Response, next: NextFunction) => {
   if (isValidScheme(req)) {
     if (!isOriginAllowed(req)) {
-      res.status(403).send('Origin not allowed');
+      res.status(403).json({
+      error: "Origin not allowed"
+    });
       return;
     }
     setAllowOrigin(req, res);
