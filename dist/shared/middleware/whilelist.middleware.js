@@ -5,7 +5,6 @@ const whitelist = [
     'http://localhost:8000',
     'https://api-basic.vercel.app',
     'https://api-basic.vercel.app/api/user',
-    'https://api-basic.vercel.app/api-docs/*'
 ];
 const corsOptions = {
     allowOrigin: createWhitelist(whitelist),
