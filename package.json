@@ -5,11 +5,16 @@
   "main": "dist/server.js",
   "scripts": {
     "start": "pnpm build && node dist/server.js",
-    "build": "tsc && echo \"✅ Proceso realizado con éxito.\"",
+    "build": "rimraf dist && tsc && echo \"✅ Proceso realizado con éxito.\"",
     "dev": "pnpm build && concurrently \"tsc -w\" \"nodemon dist/server.js\"",
     "watch": "pnpm build && concurrently \"tsc -w\" \"node --watch dist/server.js\"",
     "prod": "SET NODE_ENV=production && pnpm start"
   },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+  ],
   "keywords": [
     "backend",
     "api",
@@ -46,13 +51,15 @@
     "@vercel/node": "^2.15.5",
     "concurrently": "^8.2.0",
     "nodemon": "^3.0.1",
+    "pre-commit": "^1.2.2",
+    "rimraf": "^5.0.1",
     "swagger-jsdoc": "6.2.8",
     "swagger-ui-express": "^5.0.0",
     "typescript": "^5.1.6"
   },
   "engines": {
     "node": ">=18.0.0",
-    "pnpm": ">=7.0.0" ,
+    "pnpm": ">=7.0.0",
     "typeScript": ">=5.0.0"
   }
 }

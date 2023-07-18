@@ -1,10 +1,8 @@
 # Logs
 .lh
 .vscode
-dist
 public
 mysql/
-dist
 response
 logs
 *.log
