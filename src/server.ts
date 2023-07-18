@@ -11,6 +11,7 @@ import { ConfigServer } from './config/config/config';
 import { StartRouter } from './start/router/start.router';
 import { swaggerOptions } from './config/swagger/swaggerOptions';
 import { RaizRouter } from './raiz/router/raiz.router';
+import { handleCors } from './shared/middleware/whilelist.middleware';
 
 class ServerDc extends ConfigServer{
   public app: express.Application = express();
@@ -23,6 +24,7 @@ class ServerDc extends ConfigServer{
     this.dbConnection();
     this.app.use(helmet());
     this.app.use(morgan('dev'));
+    this.app.use(handleCors);
     this.app.use(cors());
     this.app.use('/', this.start());
     this.app.use('/api', this.api());
