@@ -1,7 +1,7 @@
 import { Handler } from 'express';
 
 const whitelist = [
-  'https://localhost:8000',
+  'http://localhost:8000',
   'https://api-basic.vercel.app'
 ];
 
@@ -57,4 +57,5 @@ function setAllowCredentials(res: any) {
 function setResponseContentType(res: any) {
   res.set('Content-Type', 'application/json; charset=utf-8');
   res.set('Content-Type', 'text/plain; charset=utf-8');
+  res.set('Content-Type', 'text/html; charset=utf-8');
 }

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handleCors = void 0;
 const whitelist = [
-    'https://localhost:8000',
+    'http://localhost:8000',
     'https://api-basic.vercel.app'
 ];
 const corsOptions = {
@@ -52,4 +52,5 @@ function setAllowCredentials(res) {
 function setResponseContentType(res) {
     res.set('Content-Type', 'application/json; charset=utf-8');
     res.set('Content-Type', 'text/plain; charset=utf-8');
+    res.set('Content-Type', 'text/html; charset=utf-8');
 }
