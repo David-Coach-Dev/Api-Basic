@@ -1,11 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handleCors = void 0;
+const inspector_1 = require("inspector");
 const whitelist = [
     'http://localhost:8000',
     'http://localhost:8000/api',
+    'http://localhost:8000/api-docs',
     'https://api-basic.vercel.app',
-    'https://api-basic.vercel.app/api'
+    'https://api-basic.vercel.app/api',
+    'https://api-basic.vercel.app/api-docs'
 ];
 const corsOptions = {
     allowOrigin: generateWhitelist(whitelist),
@@ -13,11 +16,18 @@ const corsOptions = {
     allowHeaders: ['Content-Type', 'Authorization'],
     allowCredentials: true
 };
+console.log('Cors Options', corsOptions);
 function generateWhitelist(whitelist) {
+    console.log('Url', inspector_1.url);
+    console.log('While List', whitelist);
+    console.log(' item Matches', whitelist.map(item => (url) => item.includes(url)));
     const matches = whitelist.map(item => (url) => item.includes(url));
+    console.log('Matches', matches);
+    console.log('url match', (url) => matches.some(match => match(url)));
     return (url) => matches.some(match => match(url));
 }
 const handleCors = (req, res, next) => {
+    isSameOrigin(req);
     if (isValidScheme(req)) {
         if (!isOriginAllowed(req)) {
             res.status(403).json({
@@ -34,10 +44,22 @@ const handleCors = (req, res, next) => {
     next();
 };
 exports.handleCors = handleCors;
+const createRegexpValidator = (re) => {
+    return function (origin = null) {
+        return re.test(origin);
+    };
+};
 function isValidScheme(req) {
     const scheme = req.protocol;
     return scheme === 'http' || scheme === 'https';
 }
+const isSameOrigin = function (req) {
+    const host = req.protocol + '://' + req.headers['host'];
+    console.log('Host', host);
+    const origin = req.headers['origin'];
+    console.log('Origen', origin);
+    return host === origin || !origin;
+};
 function isOriginAllowed(req) {
     const origin = req.headers['origin'];
     if (typeof corsOptions.allowOrigin === 'function' && origin) {

@@ -25,7 +25,6 @@ const config_1 = require("./config/config/config");
 const start_router_1 = require("./start/router/start.router");
 const swaggerOptions_1 = require("./config/swagger/swaggerOptions");
 const raiz_router_1 = require("./raiz/router/raiz.router");
-const whilelist_middleware_1 = require("./shared/middleware/whilelist.middleware");
 class ServerDc extends config_1.ConfigServer {
     constructor() {
         super();
@@ -38,7 +37,6 @@ class ServerDc extends config_1.ConfigServer {
         this.dbConnection();
         this.app.use((0, helmet_1.default)());
         this.app.use((0, morgan_1.default)('dev'));
-        this.app.use(whilelist_middleware_1.handleCors);
         this.app.use((0, cors_1.default)());
         this.app.use('/', this.start());
         this.app.use('/api', this.api());

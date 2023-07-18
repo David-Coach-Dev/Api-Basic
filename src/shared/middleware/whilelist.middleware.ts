@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
+import { url } from 'inspector';
 
 interface CorsOptions {
-  allowOrigin: (origin: string) => boolean | string | undefined;
+  allowOrigin: (origin: string) => boolean | string ;
   allowMethods: string[];
   allowHeaders: string[];
   allowCredentials: boolean;
@@ -10,8 +11,10 @@ interface CorsOptions {
 const whitelist = [
   'http://localhost:8000',
   'http://localhost:8000/api',
+  'http://localhost:8000/api-docs',
   'https://api-basic.vercel.app',
-  'https://api-basic.vercel.app/api'
+  'https://api-basic.vercel.app/api',
+  'https://api-basic.vercel.app/api-docs'
 ];
 
 const corsOptions: CorsOptions = {
@@ -20,13 +23,20 @@ const corsOptions: CorsOptions = {
   allowHeaders: ['Content-Type', 'Authorization'],
   allowCredentials: true
 };
+console.log('Cors Options', corsOptions);
 
 function generateWhitelist(whitelist: string[]): (url: string) => boolean {
+  console.log('Url', url);
+  console.log('While List' , whitelist);
+  console.log(' item Matches', whitelist.map(item => (url: string) => item.includes(url)));
   const matches = whitelist.map(item => (url: string) => item.includes(url));
+  console.log('Matches',matches);
+  console.log('url match', (url: string) => matches.some(match => match(url)));
   return (url: string) => matches.some(match => match(url));
 }
 
 export const handleCors = (req: Request, res: Response, next: NextFunction) => {
+  isSameOrigin(req);
   if (isValidScheme(req)) {
     if (!isOriginAllowed(req)) {
       res.status(403).json({
@@ -43,10 +53,24 @@ export const handleCors = (req: Request, res: Response, next: NextFunction) => {
   next();
 };
 
+const createRegexpValidator = (re: any)=> {
+ return function(origin = null) {
+ return re.test(origin) ;
+ }
+};
+
 function isValidScheme(req: Request): boolean {
   const scheme = req.protocol;
   return scheme === 'http' || scheme === 'https';
 }
+
+const isSameOrigin = function(req: Request): boolean {
+ const host = req.protocol + '://' + req.headers['host'];
+ console.log('Host',host)
+ const origin = req.headers['origin'];
+ console.log('Origen',origin)
+ return host === origin || !origin;
+};
 
 function isOriginAllowed(req: Request): boolean {
   const origin = req.headers['origin'];
