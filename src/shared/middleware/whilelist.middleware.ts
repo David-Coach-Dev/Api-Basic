@@ -1,4 +1,11 @@
-import { Handler } from 'express';
+import { Request, Response, NextFunction } from 'express';
+
+interface CorsOptions {
+  allowOrigin: (origin: string) => boolean | string | undefined;
+  allowMethods: string[];
+  allowHeaders: string[];
+  allowCredentials: boolean;
+}
 
 const whitelist = [
   'http://localhost:8000',
@@ -6,20 +13,24 @@ const whitelist = [
   'https://api-basic.vercel.app/api/user',
 ];
 
-const corsOptions = {
-  allowOrigin: createWhitelist(whitelist),
+const corsOptions: CorsOptions = {
+  allowOrigin: generateWhitelist(whitelist),
   allowMethods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowHeaders: ['Content-Type', 'Authorization'],
   allowCredentials: true
 };
 
-function createWhitelist(whitelist: string[]): (url: string) => boolean {
-  const matches = whitelist.map(item => (url: string) => url === item);
+function generateWhitelist(whitelist: string[]): (url: string) => boolean {
+  const matches = whitelist.map(item => (url: string) => item.includes(url));
   return (url: string) => matches.some(match => match(url));
 }
 
-export const handleCors: Handler = (req, res, next) => {
+export const handleCors = (req: Request, res: Response, next: NextFunction) => {
   if (isValidScheme(req)) {
+    if (!isOriginAllowed(req)) {
+      res.status(403).send('Origin not allowed');
+      return;
+    }
     setAllowOrigin(req, res);
     setAllowMethods(res);
     setAllowHeaders(res);
@@ -29,14 +40,30 @@ export const handleCors: Handler = (req, res, next) => {
   next();
 };
 
-function isValidScheme(req: any): boolean {
+function isValidScheme(req: Request): boolean {
   const scheme = req.protocol;
   return scheme === 'http' || scheme === 'https';
 }
 
-function setAllowOrigin(req: any, res: any) {
+function isOriginAllowed(req: Request): boolean {
   const origin = req.headers['origin'];
-  if (corsOptions.allowOrigin && corsOptions.allowOrigin(origin)) {
+  if (typeof corsOptions.allowOrigin === 'function' && origin) {
+    const result = corsOptions.allowOrigin(origin);
+    if (result !== undefined) {
+      if (typeof result === 'boolean') {
+        return result;
+      }
+      if (typeof result === 'string') {
+        return result.toLowerCase() === 'true';
+      }
+    }
+  }
+  return false;
+}
+
+function setAllowOrigin(req: Request, res: Response) {
+  const origin = req.headers['origin'];
+  if (origin && typeof corsOptions.allowOrigin === 'function' && corsOptions.allowOrigin(origin)) {
     res.set('Access-Control-Allow-Origin', origin);
     res.set('Vary', 'Origin');
   } else {
@@ -44,26 +71,25 @@ function setAllowOrigin(req: any, res: any) {
   }
 }
 
-function setAllowMethods(res: any) {
+function setAllowMethods(res: Response) {
   if (corsOptions.allowMethods) {
     res.set('Access-Control-Allow-Methods', corsOptions.allowMethods.join(', '));
   }
 }
 
-function setAllowHeaders(res: any) {
+function setAllowHeaders(res: Response) {
   if (corsOptions.allowHeaders) {
     res.set('Access-Control-Allow-Headers', corsOptions.allowHeaders.join(', '));
   }
 }
 
-function setAllowCredentials(res: any) {
+function setAllowCredentials(res: Response) {
   if (corsOptions.allowCredentials) {
     res.set('Access-Control-Allow-Credentials', 'true');
   }
 }
-function setResponseContentType(res: any) {
-  res.set('Content-Type', 'application/json; charset=utf-8, text/plain; charset=utf-8, text/html; charset=utf-8', 'text/xml; charset=utf-8', 'text/css; charset=utf-8', 'text/javascript; charset=utf-8', 'image/svg+xml; charset=utf-8');
-function setResponseContentType(res: any) {
+
+function setResponseContentType(res: Response) {
   const contentTypes = [
     'application/json; charset=utf-8',
     'text/plain; charset=utf-8',
