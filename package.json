@@ -1,7 +1,7 @@
 {
   "name": "api-basic",
   "version": "1.0.0",
-  "description": "Api Rest Full Dynamic.",
+  "description": "Api Rest Full Dynamic",
   "main": "dist/server.js",
   "scripts": {
     "start": "pnpm build && node dist/server.js",
