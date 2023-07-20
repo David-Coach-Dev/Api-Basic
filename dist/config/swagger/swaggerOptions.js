@@ -10,13 +10,13 @@ exports.swaggerOptions = {
             version: '1.0.0',
             xLogo: {
                 url: './src/asset/img/logo.png',
-                href: 'https://guerrerosback.netlify.app/api',
-                altText: 'Guerreros Backend Api'
+                href: 'https://dcdev.tk',
+                altText: 'Dc Dev Web'
             },
             contact: {
                 name: 'API Support',
-                url: 'https://www.example.com/support',
-                email: 'support@example.com'
+                url: 'https://dcdev.tk',
+                email: 'dcdevtk@gmail.com'
             },
             license: {
                 name: 'Mit',
