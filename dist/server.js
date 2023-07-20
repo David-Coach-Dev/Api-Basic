@@ -66,7 +66,7 @@ class ServerDc extends server_config_1.ConfigServer {
               'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-standalone-preset.js',
             ],
             */
-            customCss: '.swagger-ui .topbar { display: none }'
+            customCss: '.topbar { display: none }'
         };
         routes.use('/', swagger_ui_express_1.default.serve);
         routes.get('/', swagger_ui_express_1.default.setup(this.swaggerSpec, options));
