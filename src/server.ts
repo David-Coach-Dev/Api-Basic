@@ -45,14 +45,14 @@ class ServerDc extends ConfigServer{
   docs(): Array<express.Router> {
     const routes = express.Router();
     const options = {
-    customCssUrl:'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
-      customJsUrl: [
-        'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
-        'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js'
-      ],
-      explorer: true,
-      customCss: '.topbar { display: none }',
-    }
+      // customJs: [
+
+      //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
+      //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js',
+      // ],
+      // customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
+      customCss: '.swagger-ui .topbar { display: none }',
+    };
     routes.use('', swaggerUI.serve);
     routes.get('', swaggerUI.setup(this.swaggerSpec, options));
     return [routes];
