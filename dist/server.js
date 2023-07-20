@@ -16,7 +16,6 @@ const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
 const helmet_1 = __importDefault(require("helmet"));
 const morgan_1 = __importDefault(require("morgan"));
-require("reflect-metadata");
 const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const typeorm_1 = require("typeorm");
@@ -25,13 +24,13 @@ const raiz_router_1 = require("./raiz/router/raiz.router");
 const start_router_1 = require("./start/router/start.router");
 const user_router_1 = require("./user/router/user.router");
 const cors_config_1 = require("./config/cors/cors.config");
-const swaggerOptions_1 = require("./config/swagger/swaggerOptions");
+const swagger_config_1 = require("./config/swagger/swagger.config");
 class ServerDc extends server_config_1.ConfigServer {
     constructor() {
         super();
         this.app = (0, express_1.default)();
         this.port = this.getNumberEnv('PORT');
-        this.swaggerSpec = (0, swagger_jsdoc_1.default)(swaggerOptions_1.swaggerOptions);
+        this.swaggerSpec = (0, swagger_jsdoc_1.default)(swagger_config_1.swaggerConfig);
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: true }));
         this.dbConnection();
