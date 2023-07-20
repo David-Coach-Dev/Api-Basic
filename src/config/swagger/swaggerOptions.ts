@@ -5,7 +5,7 @@ export const swaggerOptions = {
       title: 'Sismadeq - Api Rest Full Dynamic.',
       description: 'Sistema De Manejo de Equipos - Sismadeq - Api Rest Full Dynamic.',
       version: '1.0.0',
-      xLogo: {
+      Logo: {
         url: './src/asset/img/logo.png',
         href: 'https://dcdev.tk',
         altText: 'Dc Dev Web'
@@ -57,7 +57,7 @@ export const swaggerOptions = {
     ],
   },
   apis: ["./dist/**/doc/*.doc.js"],
-  xTagGroups: [
+  TagGroups: [
     {
       name: 'Guerreros',
       tags: ['Users', 'Posts', 'Categories']
