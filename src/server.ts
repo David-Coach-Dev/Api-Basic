@@ -50,7 +50,7 @@ class ServerDc extends ConfigServer{
       customCss: '.swagger-ui .topbar { display: none }'
     }
     routes.use('/', swaggerUI.serve);
-    routes.get('/', swaggerUI.setup(this.swaggerSpec, options,{ customCssUrl: this.CSS_URL}));
+    routes.get('/', swaggerUI.setup(this.swaggerSpec, options));
     return [routes];
   }
   async dbConnection(): Promise<void> {
