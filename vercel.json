@@ -14,24 +14,22 @@
   "routes": [
     {
       "headers": {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
-          "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept",
-          "Access-Control-Allow-Credentials": "true",
-          "Content-Type": "application/json, text/html; charset=utf-8"
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "X-Requested-With, Content-Type, Accept",
+        "Access-Control-Allow-Credentials": "true",
+        "Content-Type": "application/json, text/html; charset=utf-8"
       },
-      "methods": ["GET,POST,PUT,DELETE,OPTIONS"],
+      "methods": [
+        "GET,POST,PUT,DELETE,OPTIONS"
+      ],
       "router": [
         {
           "src": "/(.*)",
           "dest": "dist/server.js",
-          "methods": ["GET, POST, PUT, PATCH, DELETE"]
-        }
-      ],
-      "rewrites": [
-        {
-          "source": "/api/(.*)",
-          "destination": "/api"
+          "methods": [
+            "GET, POST, PUT, PATCH, DELETE"
+          ]
         }
       ]
     }
