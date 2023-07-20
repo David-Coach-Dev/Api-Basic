@@ -1,6 +1,6 @@
 export const swaggerOptions = {
   definition: {
-    openapi: '3.1.0',
+    openapi: '3.0.3',
       info: {
       title: 'Sismadeq - Api Rest Full Dynamic.',
       description: 'Sistema De Manejo de Equipos - Sismadeq - Api Rest Full Dynamic.',
@@ -21,6 +21,19 @@ export const swaggerOptions = {
         url: 'https://opensource.org/license/mit/'
       }
     },
+    swaggerOptions: {
+      url: "/api-docs/swagger.json",
+    },
+    host: "https://api-basic.vercel.app/api",
+    schemes: [
+      "https"
+    ],
+    produces: [
+        "application/json"
+    ],
+    consumes: [
+        "application/json"
+    ],
     servers: [
       {
       url: 'http://localhost:{port}/{basePath}',
