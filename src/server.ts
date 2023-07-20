@@ -11,13 +11,11 @@ import { swaggerOptions } from './config/swagger/swaggerOptions';
 import { RaizRouter } from './raiz/router/raiz.router';
 import { StartRouter } from './start/router/start.router';
 import { UserRouter } from './user/router/user.router';
-import { corsConfig } from './config/cors/cors.config';
-import { handleCors } from './shared/middleware/whilelist.middleware';
 
 class ServerDc extends ConfigServer{
   public app: express.Application = express();
   private port: number = this.getNumberEnv('PORT');
-  private CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
+  //private CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
   private swaggerSpec = swaggerJSDoc(swaggerOptions);
   constructor() {
     super();
@@ -29,7 +27,7 @@ class ServerDc extends ConfigServer{
     this.app.use(cors());
     this.app.use('/', this.start());
     this.app.use('/api', this.api());
-    this.app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(this.swaggerSpec, { customCssUrl: this.CSS_URL }));
+    this.app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(this.swaggerSpec/*, { customCssUrl: this.CSS_URL }*/));
     this.listen();
   }
 
@@ -56,7 +54,7 @@ class ServerDc extends ConfigServer{
 
   public listen() {
     this.app.listen(this.port, () => {
-      console.log(`✅ Server 🆗 is running 💯 on https://localhost:${this.port}.`);
+      console.log(`✅ Server 🆗 is running 💯 on http://localhost:${this.port}.`);
     })
   }
 
