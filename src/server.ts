@@ -11,11 +11,11 @@ import { swaggerOptions } from './config/swagger/swaggerOptions';
 import { RaizRouter } from './raiz/router/raiz.router';
 import { StartRouter } from './start/router/start.router';
 import { UserRouter } from './user/router/user.router';
+import { corsConfig } from './config/cors/cors.config';
 
 class ServerDc extends ConfigServer{
   public app: express.Application = express();
   private port: number = this.getNumberEnv('PORT');
-  private CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
   private swaggerSpec = swaggerJSDoc(swaggerOptions);
   constructor() {
     super();
@@ -24,7 +24,7 @@ class ServerDc extends ConfigServer{
     this.dbConnection();
     this.app.use(helmet());
     this.app.use(morgan('dev'));
-    this.app.use(cors());
+    this.app.use(cors(corsConfig));
     this.app.use('/', this.start());
     this.app.use('/api', this.api());
     this.app.use('/api-docs', this.swagger());
