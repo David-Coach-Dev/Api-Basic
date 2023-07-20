@@ -51,4 +51,3 @@
  *                items:
  *                  $ref: '#/components/schemas/NotServer'
  */
-0

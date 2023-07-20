@@ -46,5 +46,5 @@ exports.swaggerConfig = {
             }
         ],
     },
-    apis: ["src/*/*/*.ts"],
+    apis: ["dist/**/doc/*.doc.js"],
 };

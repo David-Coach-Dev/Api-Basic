@@ -45,5 +45,5 @@ export const swaggerConfig = {
       }
     ],
   },
-  apis: ["src/*/*/*.ts"],
+  apis: ["dist/**/doc/*.doc.js"],
 };
