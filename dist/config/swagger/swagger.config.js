@@ -46,5 +46,5 @@ exports.swaggerConfig = {
             }
         ],
     },
-    apis: ["dist/**/doc/*.doc.js"],
+    apis: ["./dist/**/doc/*.doc.js"],
 };
