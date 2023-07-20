@@ -45,5 +45,5 @@ export const swaggerOptions = {
       }
     ],
   },
-  apis: ["dist/*/*/*.js"],
+  apis: ["src/*/*/*.js"],
 };

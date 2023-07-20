@@ -21,11 +21,11 @@ const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const typeorm_1 = require("typeorm");
 const server_config_1 = require("./config/server/server.config");
-const swaggerOptions_1 = require("./config/swagger/swaggerOptions");
 const raiz_router_1 = require("./raiz/router/raiz.router");
 const start_router_1 = require("./start/router/start.router");
 const user_router_1 = require("./user/router/user.router");
 const cors_config_1 = require("./config/cors/cors.config");
+const swaggerOptions_1 = require("./config/swagger/swaggerOptions");
 class ServerDc extends server_config_1.ConfigServer {
     constructor() {
         super();
