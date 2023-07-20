@@ -4,12 +4,12 @@
   "description": "Api Rest Full Dynamic",
   "main": "dist/server.js",
   "scripts": {
-    "start": "pnpm build && node dist/server.js",
-    "build": "tsc && echo \"✅ Proceso realizado con éxito.\"",
-    "dev": "clear && pnpm build && concurrently \"tsc -w\" \"nodemon dist/server.js\"",
+    "start": "pnpm build && node dist/server.js && echo \"✅ Proceso realizado con éxito.\"",
+    "build": "clear && tsc && echo \"✅ Proceso realizado con éxito.\"",
+    "dev": "pnpm build && concurrently \"tsc -w\" \"nodemon dist/server.js\"",
     "watch": "pnpm build && concurrently \"tsc -w\" \"node --watch dist/server.js\"",
-    "prod": "SET NODE_ENV=production && pnpm start && echo \"✅ Proceso realizado con éxito.\"",
-    "test": "pnpm dev && pnpm watch && echo \"✅ Proceso realizado con éxito.\""
+    "prod": " SET NODE_ENV=production && pnpm start && echo \"✅ Proceso realizado con éxito.\"",
+    "test": "clear && echo \"✅ Proceso por implementar.\""
   },
   "keywords": [
     "backend",
@@ -39,7 +39,7 @@
     "swagger-jsdoc": "6.2.8",
     "swagger-ui-express": "^5.0.0"
   },
-  "devDependencies":{
+  "devDependencies": {
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
     "@types/morgan": "^1.9.4",

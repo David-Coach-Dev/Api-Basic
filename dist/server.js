@@ -65,8 +65,8 @@ class ServerDc extends server_config_1.ConfigServer {
             ],*/
             customCss: '.topbar { display: none }',
         };
-        routes.use('/', swagger_ui_express_1.default.serve);
-        routes.get('/', swagger_ui_express_1.default.setup(this.swaggerSpec, options));
+        routes.use('/*', swagger_ui_express_1.default.serve);
+        routes.get('/*', swagger_ui_express_1.default.setup(this.swaggerSpec, options));
         return [routes];
     }
     dbConnection() {
