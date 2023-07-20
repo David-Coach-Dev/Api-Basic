@@ -27,7 +27,7 @@ class ServerDc extends ConfigServer{
     this.app.use(cors());
     this.app.use('/', this.start());
     this.app.use('/api', this.api());
-    this.app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(this.swaggerSpec/*, { customCssUrl: this.CSS_URL }*/));
+    this.app.use('/api-docs', this.swagger());
     this.listen();
   }
 
@@ -43,6 +43,12 @@ class ServerDc extends ConfigServer{
     ];
   };
 
+  swagger():Array<express.Router>{
+    const routes = express.Router();
+    routes.use('/', swaggerUI.serve);
+    routes.get('/', swaggerUI.setup(this.swaggerSpec));
+    return [routes];
+  }
   async dbConnection(): Promise<void> {
     try {
         await new DataSource(this.typeORMConfig).initialize();

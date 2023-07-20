@@ -17,5 +17,5 @@ export const swaggerOptions = {
       }
     ],
   },
-  apis: ["./dist/**/doc/*.doc.js"],
+  apis: ["./dist/**/doc/*.doc.js" ],
 };
