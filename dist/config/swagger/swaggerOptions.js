@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.swaggerOptions = void 0;
 exports.swaggerOptions = {
     definition: {
-        openapi: '3.0.0',
+        openapi: '3.0.3',
         info: {
             title: 'Sismadeq - Api Rest Full Dynamic.',
             description: 'Sistema De Manejo de Equipos - Sismadeq - Api Rest Full Dynamic.',
