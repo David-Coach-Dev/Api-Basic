@@ -27,7 +27,7 @@ class ServerDc extends ConfigServer{
     this.app.use(cors(corsConfig));
     this.app.use('/', this.start());
     this.app.use('/api', this.api());
-    this.app.use('/api-docs', this.swagger());
+    this.app.use('/docs', this.swagger());
     this.listen();
   }
 
@@ -54,8 +54,8 @@ class ServerDc extends ConfigServer{
       explorer: true,
       customCss: '.topbar { display: none }',
     }
-    routes.use('/info', swaggerUI.serve);
-    routes.get('/info', swaggerUI.setup(this.swaggerSpec, options));
+    routes.use('/api', swaggerUI.serve);
+    routes.get('/api', swaggerUI.setup(this.swaggerSpec, options));
     return [routes];
   }
   async dbConnection(): Promise<void> {
