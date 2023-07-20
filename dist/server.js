@@ -18,6 +18,7 @@ const helmet_1 = __importDefault(require("helmet"));
 const morgan_1 = __importDefault(require("morgan"));
 const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
+require("reflect-metadata");
 const typeorm_1 = require("typeorm");
 const server_config_1 = require("./config/server/server.config");
 const raiz_router_1 = require("./raiz/router/raiz.router");
@@ -63,10 +64,11 @@ class ServerDc extends server_config_1.ConfigServer {
               'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
               'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js'
             ],*/
+            explorer: true,
             customCss: '.topbar { display: none }',
         };
-        routes.use('/*', swagger_ui_express_1.default.serve);
-        routes.get('/*', swagger_ui_express_1.default.setup(this.swaggerSpec, options));
+        routes.use('/info', swagger_ui_express_1.default.serve);
+        routes.get('/info', swagger_ui_express_1.default.setup(this.swaggerSpec, options));
         return [routes];
     }
     dbConnection() {

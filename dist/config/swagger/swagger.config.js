@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.swaggerConfig = void 0;
 exports.swaggerConfig = {
+    failOnErrors: true,
     definition: {
         openapi: '3.0.0',
         info: {

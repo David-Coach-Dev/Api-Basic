@@ -1,6 +1,6 @@
 "use strict";
 /**
- * @swagger
+ * @openapi
  * components:
  *  schemas:
  *    User:
@@ -18,7 +18,7 @@
  *        user: Dc Dev
  *   */
 /**
- * @swagger
+ * @openapi
  *  /user:
  *    get:
  *      tags: [user]

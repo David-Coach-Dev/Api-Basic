@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express';
+import "reflect-metadata";
 import { DataSource } from 'typeorm';
 import { ConfigServer } from './config/server/server.config';
 import { RaizRouter } from './raiz/router/raiz.router';
@@ -50,10 +51,11 @@ class ServerDc extends ConfigServer{
         'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
         'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js'
       ],*/
+      explorer: true,
       customCss: '.topbar { display: none }',
     }
-    routes.use('/*', swaggerUI.serve);
-    routes.get('/*', swaggerUI.setup(this.swaggerSpec, options));
+    routes.use('/info', swaggerUI.serve);
+    routes.get('/info', swaggerUI.setup(this.swaggerSpec, options));
     return [routes];
   }
   async dbConnection(): Promise<void> {

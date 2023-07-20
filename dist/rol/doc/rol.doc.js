@@ -1,6 +1,6 @@
 "use strict";
 /**
- * @swagger
+ * @openapi
  * components:
  *  schemas:
  *    rol:
@@ -18,7 +18,7 @@
  *        rol: Admin
  */
 /**
- * @swagger
+ * @openapi
  *  /rol:
  *    get:
  *      tags: [rol]
@@ -51,3 +51,4 @@
  *                items:
  *                  $ref: '#/components/schemas/NotServer'
  */ 
+
