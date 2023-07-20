@@ -28,16 +28,13 @@ exports.swaggerOptions = {
             {
                 url: 'http://localhost:{port}/{basePath}',
                 description: 'The server api environment development',
-                schemesUrl: [
-                    "http"
-                ],
                 variables: {
                     port: {
                         enum: ['8000', '7000'],
                         default: '8000'
                     },
                     basePath: {
-                        enum: ['api', 'docs'],
+                        enum: ['api', 'api-docs'],
                         default: 'api',
                         description: 'this value is assigned by the service provider'
                     },
@@ -51,9 +48,6 @@ exports.swaggerOptions = {
             {
                 url: 'https://api-basic.vercel.app/api',
                 description: 'The server api environment production',
-                schemesUrl: [
-                    "https"
-                ],
             }
         ],
     },
