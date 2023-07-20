@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   dc_db:
+    container_name: Dc_Dev_My_Sql
     image: mysql:5.7
     restart: always
     volumes:

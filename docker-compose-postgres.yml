@@ -1,6 +1,7 @@
 version: '3.8'
 services:
   postgres:
+    container_name: Dc_Dev_Postgres
     image: postgres:10.3
     restart: always
     environment:
