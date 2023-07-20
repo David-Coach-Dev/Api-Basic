@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-import { url } from 'inspector';
 
 interface CorsOptions {
   allowOrigin: (origin: string) => boolean | string ;
@@ -9,7 +8,7 @@ interface CorsOptions {
 }
 
 const whitelist = [
-  'http://localhost:8000',
+  'http://localhost:8000/',
   'http://localhost:8000/api',
   'http://localhost:8000/api-docs',
   'https://api-basic.vercel.app',
@@ -26,13 +25,10 @@ const corsOptions: CorsOptions = {
 console.log('Cors Options', corsOptions);
 
 function generateWhitelist(whitelist: string[]): (url: string) => boolean {
-  console.log('Url', url);
-  console.log('While List' , whitelist);
-  console.log(' item Matches', whitelist.map(item => (url: string) => item.includes(url)));
-  const matches = whitelist.map(item => (url: string) => item.includes(url));
-  console.log('Matches',matches);
-  console.log('url match', (url: string) => matches.some(match => match(url)));
-  return (url: string) => matches.some(match => match(url));
+  return (url: string) =>{
+    console.log('url',url);
+    return whitelist.some(match => match.includes(url))
+  };
 }
 
 export const handleCors = (req: Request, res: Response, next: NextFunction) => {
@@ -53,11 +49,6 @@ export const handleCors = (req: Request, res: Response, next: NextFunction) => {
   next();
 };
 
-const createRegexpValidator = (re: any)=> {
- return function(origin = null) {
- return re.test(origin) ;
- }
-};
 
 function isValidScheme(req: Request): boolean {
   const scheme = req.protocol;
@@ -66,7 +57,7 @@ function isValidScheme(req: Request): boolean {
 
 const isSameOrigin = function(req: Request): boolean {
  const host = req.protocol + '://' + req.headers['host'];
- console.log('Host',host)
+ console.log('Host -> ',host)
  const origin = req.headers['origin'];
  console.log('Origen',origin)
  return host === origin || !origin;

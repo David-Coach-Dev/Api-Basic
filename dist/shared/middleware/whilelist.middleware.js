@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.handleCors = void 0;
-const inspector_1 = require("inspector");
 const whitelist = [
-    'http://localhost:8000',
+    'http://localhost:8000/',
     'http://localhost:8000/api',
     'http://localhost:8000/api-docs',
     'https://api-basic.vercel.app',
@@ -18,13 +17,10 @@ const corsOptions = {
 };
 console.log('Cors Options', corsOptions);
 function generateWhitelist(whitelist) {
-    console.log('Url', inspector_1.url);
-    console.log('While List', whitelist);
-    console.log(' item Matches', whitelist.map(item => (url) => item.includes(url)));
-    const matches = whitelist.map(item => (url) => item.includes(url));
-    console.log('Matches', matches);
-    console.log('url match', (url) => matches.some(match => match(url)));
-    return (url) => matches.some(match => match(url));
+    return (url) => {
+        console.log('url', url);
+        return whitelist.some(match => match.includes(url));
+    };
 }
 const handleCors = (req, res, next) => {
     isSameOrigin(req);
@@ -44,18 +40,13 @@ const handleCors = (req, res, next) => {
     next();
 };
 exports.handleCors = handleCors;
-const createRegexpValidator = (re) => {
-    return function (origin = null) {
-        return re.test(origin);
-    };
-};
 function isValidScheme(req) {
     const scheme = req.protocol;
     return scheme === 'http' || scheme === 'https';
 }
 const isSameOrigin = function (req) {
     const host = req.protocol + '://' + req.headers['host'];
-    console.log('Host', host);
+    console.log('Host -> ', host);
     const origin = req.headers['origin'];
     console.log('Origen', origin);
     return host === origin || !origin;

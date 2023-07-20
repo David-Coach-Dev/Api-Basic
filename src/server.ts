@@ -6,11 +6,13 @@ import "reflect-metadata";
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express';
 import { DataSource } from 'typeorm';
-import { ConfigServer } from './config/config/config';
+import { ConfigServer } from './config/server/server.config';
 import { swaggerOptions } from './config/swagger/swaggerOptions';
 import { RaizRouter } from './raiz/router/raiz.router';
 import { StartRouter } from './start/router/start.router';
 import { UserRouter } from './user/router/user.router';
+import { corsConfig } from './config/cors/cors.config';
+import { handleCors } from './shared/middleware/whilelist.middleware';
 
 class ServerDc extends ConfigServer{
   public app: express.Application = express();

@@ -5,8 +5,10 @@ const whitelist = ['https://api-basic.vercel.app/', 'http://localhost:8000'];
 console.log('whitelist', whitelist);
 exports.corsConfig = {
     origin: function (origin, callback) {
+        const isWhitelisted = whitelist.indexOf(origin) !== -1;
         console.log('origin', origin);
-        if (whitelist.indexOf(origin) !== -1) {
+        console.log('isWhitelisted', isWhitelisted);
+        if (!isWhitelisted) {
             callback(null, true);
         }
         else {

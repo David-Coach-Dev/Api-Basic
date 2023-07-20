@@ -29,7 +29,6 @@ export abstract class ConfigServer {
     }
     return '.' + arrEnv.join('.');
   }
-
   public get typeORMConfig(): DataSourceOptions {
     return{
         type: "mysql",
