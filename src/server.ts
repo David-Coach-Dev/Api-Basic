@@ -15,7 +15,7 @@ import { UserRouter } from './user/router/user.router';
 class ServerDc extends ConfigServer{
   public app: express.Application = express();
   private port: number = this.getNumberEnv('PORT');
-  private cssSwagger = { customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.18.3/swagger-ui.css' };
+  private CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
   private swaggerSpec = swaggerJSDoc(swaggerOptions);
   constructor() {
     super();
@@ -45,8 +45,11 @@ class ServerDc extends ConfigServer{
 
   swagger():Array<express.Router>{
     const routes = express.Router();
+    const options = {
+      customCss: '.swagger-ui .topbar { display: none }'
+    }
     routes.use('/', swaggerUI.serve);
-    routes.get('/', swaggerUI.setup(this.swaggerSpec, this.cssSwagger));
+    routes.get('/', swaggerUI.setup(this.swaggerSpec, options,{ customCssUrl: this.CSS_URL}));
     return [routes];
   }
   async dbConnection(): Promise<void> {

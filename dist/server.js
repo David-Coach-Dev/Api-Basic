@@ -30,7 +30,7 @@ class ServerDc extends server_config_1.ConfigServer {
         super();
         this.app = (0, express_1.default)();
         this.port = this.getNumberEnv('PORT');
-        this.cssSwagger = { customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.18.3/swagger-ui.css' };
+        this.CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css";
         this.swaggerSpec = (0, swagger_jsdoc_1.default)(swaggerOptions_1.swaggerOptions);
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: true }));
@@ -58,8 +58,11 @@ class ServerDc extends server_config_1.ConfigServer {
     ;
     swagger() {
         const routes = express_1.default.Router();
+        const options = {
+            customCss: '.swagger-ui .topbar { display: none }'
+        };
         routes.use('/', swagger_ui_express_1.default.serve);
-        routes.get('/', swagger_ui_express_1.default.setup(this.swaggerSpec, this.cssSwagger));
+        routes.get('/', swagger_ui_express_1.default.setup(this.swaggerSpec, options, { customCssUrl: this.CSS_URL }));
         return [routes];
     }
     dbConnection() {
