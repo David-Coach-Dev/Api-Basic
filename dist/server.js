@@ -32,6 +32,14 @@ class ServerDc extends server_config_1.ConfigServer {
         this.app = (0, express_1.default)();
         this.port = this.getNumberEnv('PORT');
         this.swaggerSpec = (0, swagger_jsdoc_1.default)(swagger_config_1.swaggerConfig);
+        this.options = {
+            // customJs: [
+            //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
+            //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js',
+            // ],
+            // customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
+            customCss: '.swagger-ui .topbar { display: none }',
+        };
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: true }));
         this.dbConnection();
@@ -40,7 +48,8 @@ class ServerDc extends server_config_1.ConfigServer {
         this.app.use((0, cors_1.default)(cors_config_1.corsConfig));
         this.app.use('/', this.start());
         this.app.use('/api', this.api());
-        this.app.use('/docs', this.docs());
+        this.app.use('/docs', swagger_ui_express_1.default.serve);
+        this.app.get('/docs', swagger_ui_express_1.default.setup(this.swaggerSpec, this.options));
         this.listen();
     }
     api() {
@@ -58,16 +67,8 @@ class ServerDc extends server_config_1.ConfigServer {
     ;
     docs() {
         const routes = express_1.default.Router();
-        const options = {
-            // customJs: [
-            //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
-            //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js',
-            // ],
-            // customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
-            customCss: '.swagger-ui .topbar { display: none }',
-        };
         routes.use('', swagger_ui_express_1.default.serve);
-        routes.get('', swagger_ui_express_1.default.setup(this.swaggerSpec, options));
+        routes.get('', swagger_ui_express_1.default.setup(this.swaggerSpec, this.options));
         return [routes];
     }
     dbConnection() {

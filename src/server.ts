@@ -27,7 +27,8 @@ class ServerDc extends ConfigServer{
     this.app.use(cors(corsConfig));
     this.app.use('/', this.start());
     this.app.use('/api', this.api());
-    this.app.use('/docs',this.docs());
+    this.app.use('/docs', swaggerUI.serve);
+    this.app.get('/docs', swaggerUI.setup(this.swaggerSpec, this.options));
     this.listen();
   }
 
@@ -42,9 +43,7 @@ class ServerDc extends ConfigServer{
       new StartRouter().router,
     ];
   };
-  docs(): Array<express.Router> {
-    const routes = express.Router();
-    const options = {
+  options = {
       // customJs: [
 
       //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
@@ -52,9 +51,11 @@ class ServerDc extends ConfigServer{
       // ],
       // customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
       customCss: '.swagger-ui .topbar { display: none }',
-    };
+  };
+  docs(): Array<express.Router> {
+    const routes = express.Router();
     routes.use('', swaggerUI.serve);
-    routes.get('', swaggerUI.setup(this.swaggerSpec, options));
+    routes.get('', swaggerUI.setup(this.swaggerSpec, this.options));
     return [routes];
   }
 
