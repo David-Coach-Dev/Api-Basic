@@ -46,6 +46,8 @@ exports.swaggerConfig = {
                 description: 'The server api environment production',
             }
         ],
+        apis: [
+            "src/*/*/*.ts"
+        ],
     },
-    apis: ["./dist/**/doc/*.doc.js"],
 };
