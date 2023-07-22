@@ -1,4 +1,4 @@
-export const swaggerConfig = {
+export const swaggerConfig: any = {
   failOnErrors: true,
   definition: {
     openapi: '3.0.0',
