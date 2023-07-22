@@ -46,8 +46,8 @@ exports.swaggerConfig = {
                 description: 'The server api environment production',
             }
         ],
-        apis: [
-            "dist/**/**/*.doc.js"
-        ],
     },
+    apis: [
+        "./dist/**/**/*.doc.js",
+    ],
 };

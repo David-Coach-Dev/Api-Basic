@@ -1,8 +1,8 @@
-export const swaggerConfig: any = {
+export const swaggerConfig = {
   failOnErrors: true,
   definition: {
     openapi: '3.0.0',
-      info: {
+    info: {
       title: 'Sismadeq - Api Rest Full Dynamic.',
       description: 'Sistema De Manejo de Equipos - Sismadeq - Api Rest Full Dynamic.',
       version: '1.0.0',
@@ -19,7 +19,7 @@ export const swaggerConfig: any = {
     },
     servers: [
       {
-      url: 'http://localhost:{port}/{basePath}',
+        url: 'http://localhost:{port}/{basePath}',
         description: 'The server api environment development',
         variables: {
           port: {
@@ -45,8 +45,8 @@ export const swaggerConfig: any = {
         description: 'The server api environment production',
       }
     ],
-    apis: [
-      "dist/**/**/*.doc.js"
-    ],
   },
-}
+  apis: [
+    "./dist/**/**/*.doc.js",
+  ],
+};
