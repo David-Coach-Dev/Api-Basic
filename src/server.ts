@@ -52,12 +52,6 @@ class ServerDc extends ConfigServer{
       customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
       customCss: '.swagger-ui .topbar { display: none }',
   };
-  docs(): Array<express.Router> {
-    const routes = express.Router();
-    routes.use('', swaggerUI.serve);
-    routes.get('', swaggerUI.setup(this.swaggerSpec, this.options));
-    return [routes];
-  }
 
   async dbConnection(): Promise<void> {
     try {

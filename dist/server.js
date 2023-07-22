@@ -65,12 +65,6 @@ class ServerDc extends server_config_1.ConfigServer {
         ];
     }
     ;
-    docs() {
-        const routes = express_1.default.Router();
-        routes.use('', swagger_ui_express_1.default.serve);
-        routes.get('', swagger_ui_express_1.default.setup(this.swaggerSpec, this.options));
-        return [routes];
-    }
     dbConnection() {
         return __awaiter(this, void 0, void 0, function* () {
             try {

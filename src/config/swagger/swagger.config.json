@@ -22,16 +22,25 @@
         "description": "The server api environment development",
         "variables": {
           "port": {
-            "enum": ["8000", "7000"],
+            "enum": [
+              "8000",
+              "7000"
+            ],
             "default": "8000"
           },
           "basePath": {
-            "enum": ["api", "api-docs"],
+            "enum": [
+              "api",
+              "api-docs"
+            ],
             "default": "api",
             "description": "this value is assigned by the service provider"
           },
           "versionApi": {
-            "enum": ["v1", "v2"],
+            "enum": [
+              "v1",
+              "v2"
+            ],
             "default": "v1",
             "description": "this value is assigned by the version api provider"
           }
@@ -41,7 +50,9 @@
         "url": "https://api-basic.vercel.app/api",
         "description": "The server api environment production"
       }
+    ],
+    "apis": [
+      "src/*/*/*.ts"
     ]
-  },
-  "apis": ["src/*/*/*.ts"]
+  }
 }
