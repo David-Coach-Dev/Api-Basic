@@ -20,8 +20,8 @@
       "status": 200
     },
     {
-      "src": "/docs",
-      "dest": "dist/server.js",
+      "src": "/doc",
+      "dest": "server.js",
       "status": 200
     }
   ]
