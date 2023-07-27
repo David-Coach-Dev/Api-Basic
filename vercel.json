@@ -23,7 +23,6 @@
       "src": "/(.docs)",
       "dest": "dist/server.js",
       "status": 200
-    },
-
+    }
   ]
 }
