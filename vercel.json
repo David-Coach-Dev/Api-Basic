@@ -1,17 +1,29 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
+  "builds": [
+    {
+      "src": "dist/server.js",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": [
+          "dist/**/**/*.js",
+          "dist/*.js"
+        ]
+      }
+    }
+  ],
   "routes": [
     {
-      "src": "/[^.]+",
-      "dest": "/",
+      "src": "/(.*)",
+      "dest": "dist/server.js",
       "status": 200,
       "methods": [
         "GET",
+        "HEAD",
         "POST",
         "PUT",
-        "DELETE",
-        "OPTION"
+        "DELETE"
       ]
     }
   ]
