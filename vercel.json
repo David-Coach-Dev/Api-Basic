@@ -13,11 +13,23 @@
       }
     }
   ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "dist/server.js",
-      "status": 200
-    }
-  ]
+
+"redirects": [
+  {
+    "source": "/",
+    "destination": "/api",
+    "permanent": false
+  },
+  {
+    "source": "/api",
+    "destination": "/api/user",
+    "permanent": false
+  }
+],
+"rewrites": [
+  {
+    "source": "/api/(.*)",
+    "destination": "/api/server.js"
+  }
+]
 }
