@@ -21,7 +21,7 @@
     },
     {
       "src": "/doc",
-      "dest": "server.js",
+      "dest": "dist/config/swagger/swagger.config.js",
       "status": 200
     }
   ]
