@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.swaggerConfig = void 0;
 exports.swaggerConfig = {
+    $schema: 'https://json.schemastore.org/swagger-3.0',
     failOnErrors: true,
     definition: {
         openapi: '3.0.0',
@@ -48,6 +49,6 @@ exports.swaggerConfig = {
         ],
     },
     apis: [
-        "./dist/**/**/*.doc.js",
+        "/dist/**/**/*.doc.js",
     ],
 };

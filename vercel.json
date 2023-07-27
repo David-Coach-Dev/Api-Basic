@@ -17,14 +17,13 @@
     {
       "src": "/(.*)",
       "dest": "dist/server.js",
-      "status": 200,
-      "methods": [
-        "GET",
-        "HEAD",
-        "POST",
-        "PUT",
-        "DELETE"
-      ]
-    }
+      "status": 200
+    },
+    {
+      "src": "/(.docs)",
+      "dest": "dist/server.js",
+      "status": 200
+    },
+
   ]
 }
