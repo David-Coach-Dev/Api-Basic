@@ -6,7 +6,7 @@
   "main": "dist/server.js",
   "scripts": {
     "start": "pnpm build && node dist/server.js && echo \"✅ Proceso realizado con éxito.\"",
-    "build": "tsc && echo \"✅ Proceso realizado con éxito.\"",
+    "build": "clear && rmdir /s dist && tsc && echo \"✅ Proceso realizado con éxito.\"",
     "dev": "tsc && concurrently \"tsc -w\" \"nodemon dist/server.js\"",
     "watch": "tsc && concurrently \"tsc -w\" \"node --watch dist/server.js\"",
     "prod": " SET NODE_ENV=production && pnpm start && echo \"✅ Proceso realizado con éxito.\"",
