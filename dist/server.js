@@ -48,7 +48,8 @@ class ServerDc extends server_config_1.ConfigServer {
         this.app.use((0, cors_1.default)(cors_config_1.corsConfig));
         this.app.use('/', this.start());
         this.app.use('/api', this.api());
-        this.app.use('/doc', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(this.swaggerSpec, this.options));
+        this.app.use('/api', swagger_ui_express_1.default.serve);
+        this.app.get('/doc', swagger_ui_express_1.default.setup(this.swaggerSpec, this.options));
         this.listen();
     }
     api() {
