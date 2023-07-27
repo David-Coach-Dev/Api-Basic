@@ -1,35 +1,22 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "builds": [
+  "redirects": [
     {
-      "src": "dist/server.js",
-      "use": "@vercel/node",
-      "config": {
-        "includeFiles": [
-          "dist/**/**/*.js",
-          "dist/*.js"
-        ]
-      }
+      "source": "/",
+      "destination": "/api",
+      "permanent": false
+    },
+    {
+      "source": "/api",
+      "destination": "/api/user",
+      "permanent": false
     }
   ],
-
-"redirects": [
-  {
-    "source": "/",
-    "destination": "/api",
-    "permanent": false
-  },
-  {
-    "source": "/api",
-    "destination": "/api/user",
-    "permanent": false
-  }
-],
-"rewrites": [
-  {
-    "source": "/api/(.*)",
-    "destination": "/api/server.js"
-  }
-]
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/server.js"
+    }
+  ]
 }
