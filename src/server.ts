@@ -20,7 +20,6 @@ class ServerDc extends ConfigServer{
   public app: express.Application = express();
   private port: number = this.getNumberEnv('PORT');
   private swaggerSpec = swaggerJSDoc(swaggerConfig);
-  private pathToSwaggerUi = require('swagger-ui-dist').absolutePath()
 
   constructor() {
     super();
@@ -33,7 +32,6 @@ class ServerDc extends ConfigServer{
     this.app.use('/', this.start());
     this.app.use('/api', this.api());
     this.app.use('/docs', swaggerUI.serve)
-    this.app.use(express.static(this.pathToSwaggerUi))
     this.app.use('/docs', swaggerUI.setup(this.swaggerSpec, this.options));
     this.listen();
   }

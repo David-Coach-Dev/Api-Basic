@@ -32,7 +32,6 @@ class ServerDc extends server_config_1.ConfigServer {
         this.app = (0, express_1.default)();
         this.port = this.getNumberEnv('PORT');
         this.swaggerSpec = (0, swagger_jsdoc_1.default)(swagger_config_1.swaggerConfig);
-        this.pathToSwaggerUi = require('swagger-ui-dist').absolutePath();
         this.options = {
             explorer: false,
             swaggerUi: false,
@@ -60,7 +59,6 @@ class ServerDc extends server_config_1.ConfigServer {
         this.app.use('/', this.start());
         this.app.use('/api', this.api());
         this.app.use('/docs', swagger_ui_express_1.default.serve);
-        this.app.use(express_1.default.static(this.pathToSwaggerUi));
         this.app.use('/docs', swagger_ui_express_1.default.setup(this.swaggerSpec, this.options));
         this.listen();
     }
