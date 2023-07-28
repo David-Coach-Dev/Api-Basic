@@ -19,17 +19,5 @@
       "src": "/(.*)",
       "dest": "dist/server.js"
     }
-  ],
-  "redirects": [
-    {
-      "source": "/docs",
-      "destination": "/docs/",
-      "permanent": false
-    },
-    {
-      "source": "/",
-      "destination": "/api",
-      "permanent": false
-    }
   ]
 }
