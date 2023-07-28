@@ -42,13 +42,12 @@ class ServerDc extends server_config_1.ConfigServer {
             deepLinking: true,
             customSiteTitle: 'Api Rest Full Dynamic',
             customfavIcon: './asset/ico/favicon.ico',
-            customSiteUrl: 'http://localhost.8000',
             customCss: '.topbar { display: none }',
-            customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
+            /*customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
             customJsUrl: [
-                'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
-                'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js',
-            ],
+              'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
+              'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js',
+            ],*/
         };
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: true }));
