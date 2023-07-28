@@ -20,9 +20,8 @@
       "dest": "dist/server.js"
     },
     {
-      "src": "/docs/",
+      "src": "/docs/(.*)",
       "dest": "dist/server.js"
     }
-
   ]
 }
