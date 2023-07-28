@@ -37,6 +37,7 @@ class ServerDc extends server_config_1.ConfigServer {
             //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
             //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js',
             // ],
+            customSiteTitle: 'Api Rest Full Dynamic',
             customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
             customCss: '.swagger-ui .topbar { display: none }',
         };
@@ -49,7 +50,7 @@ class ServerDc extends server_config_1.ConfigServer {
         this.app.use('/', this.start());
         this.app.use('/api', this.api());
         this.app.use('/docs', swagger_ui_express_1.default.serve);
-        this.app.use('/docs', swagger_ui_express_1.default.setup(this.swaggerSpec));
+        this.app.use('/docs', swagger_ui_express_1.default.setup(this.swaggerSpec, this.options));
         this.listen();
     }
     api() {
