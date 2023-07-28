@@ -12,12 +12,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const cors_1 = __importDefault(require("cors"));
 const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
 const helmet_1 = __importDefault(require("helmet"));
 const morgan_1 = __importDefault(require("morgan"));
-const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 require("reflect-metadata");
+const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
+const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const typeorm_1 = require("typeorm");
 const server_config_1 = require("./config/server/server.config");
 const raiz_router_1 = require("./raiz/router/raiz.router");
@@ -25,21 +26,35 @@ const start_router_1 = require("./start/router/start.router");
 const user_router_1 = require("./user/router/user.router");
 const cors_config_1 = require("./config/cors/cors.config");
 const swagger_config_1 = require("./config/swagger/swagger.config");
-const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 class ServerDc extends server_config_1.ConfigServer {
     constructor() {
         super();
         this.app = (0, express_1.default)();
         this.port = this.getNumberEnv('PORT');
         this.swaggerSpec = (0, swagger_jsdoc_1.default)(swagger_config_1.swaggerConfig);
+        this.pathToSwaggerUi = require('swagger-ui-dist').absolutePath();
         this.options = {
             // customJs: [
             //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
             //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js',
             // ],
+            path: '/docs',
+            explorer: true,
+            swaggerUi: true,
+            docExpansion: 'list',
+            validatorUrl: null,
+            filter: false,
+            apisSorter: 'alpha',
+            deepLinking: true,
             customSiteTitle: 'Api Rest Full Dynamic',
+            customfavIcon: './asset/ico/favicon.ico',
+            customSiteUrl: 'http://localhost.8000',
+            //customCss: '.swagger-ui .topbar { display: none }',
             customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
-            customCss: '.swagger-ui .topbar { display: none }',
+            customJsUrl: [
+                'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
+                'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js',
+            ],
         };
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: true }));
@@ -51,6 +66,7 @@ class ServerDc extends server_config_1.ConfigServer {
         this.app.use('/api', this.api());
         this.app.use('/docs', swagger_ui_express_1.default.serve);
         this.app.use('/docs', swagger_ui_express_1.default.setup(this.swaggerSpec, this.options));
+        this.app.use(express_1.default.static(this.pathToSwaggerUi));
         this.listen();
     }
     api() {

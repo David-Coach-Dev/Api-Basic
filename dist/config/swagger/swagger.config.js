@@ -46,6 +46,12 @@ exports.swaggerConfig = {
                 description: 'The server api environment production',
             }
         ],
+        schemes: [
+            "http",
+            "https"
+        ],
+        consumes: ['application/json'],
+        produces: ['application/json'],
     },
     apis: [
         "./dist/**/**/*.doc.js",

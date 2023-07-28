@@ -1,9 +1,12 @@
-import cors from 'cors';
 import express from 'express';
+import cors from 'cors';
+import path from 'path';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import swaggerJSDoc from 'swagger-jsdoc';
 import "reflect-metadata";
+import swaggerJSDoc from 'swagger-jsdoc';
+import swaggerUI from 'swagger-ui-express';
+import swaggerServer from 'express-swagger-ui-router';
 import { DataSource } from 'typeorm';
 import { ConfigServer } from './config/server/server.config';
 import { RaizRouter } from './raiz/router/raiz.router';
@@ -11,12 +14,13 @@ import { StartRouter } from './start/router/start.router';
 import { UserRouter } from './user/router/user.router';
 import { corsConfig } from './config/cors/cors.config';
 import { swaggerConfig } from './config/swagger/swagger.config';
-import swaggerUI from 'swagger-ui-express';
+
 
 class ServerDc extends ConfigServer{
   public app: express.Application = express();
   private port: number = this.getNumberEnv('PORT');
   private swaggerSpec = swaggerJSDoc(swaggerConfig);
+  private pathToSwaggerUi = require('swagger-ui-dist').absolutePath()
   constructor() {
     super();
     this.app.use(express.json());
@@ -29,6 +33,7 @@ class ServerDc extends ConfigServer{
     this.app.use('/api', this.api());
     this.app.use('/docs', swaggerUI.serve)
     this.app.use('/docs', swaggerUI.setup(this.swaggerSpec, this.options));
+    this.app.use(express.static(this.pathToSwaggerUi))
     this.listen();
   }
 
@@ -44,14 +49,28 @@ class ServerDc extends ConfigServer{
     ];
   };
   options = {
-      // customJs: [
+    // customJs: [
 
-      //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
-      //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js',
-      // ],
-      customSiteTitle: 'Api Rest Full Dynamic',
-      customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
-      customCss: '.swagger-ui .topbar { display: none }',
+    //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
+    //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js',
+    // ],
+    path: '/docs',
+    explorer: true,
+    swaggerUi: true,
+    docExpansion: 'list',
+    validatorUrl: null,
+    filter: false,
+    apisSorter: 'alpha',
+    deepLinking: true,
+    customSiteTitle: 'Api Rest Full Dynamic',
+    customfavIcon: './asset/ico/favicon.ico',
+    customSiteUrl: 'http://localhost.8000',
+   //customCss: '.swagger-ui .topbar { display: none }',
+    customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
+    customJsUrl: [
+      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js',
+    ],
   };
 
   async dbConnection(): Promise<void> {
