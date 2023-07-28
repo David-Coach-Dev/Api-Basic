@@ -3,6 +3,11 @@
   "version": 2,
   "redirects": [
     {
+      "source": "/docs",
+      "destination": "/docs/",
+      "permanent": false
+    },
+    {
       "source": "/",
       "destination": "/api",
       "permanent": false
