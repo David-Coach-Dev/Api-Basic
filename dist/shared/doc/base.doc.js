@@ -34,4 +34,4 @@
  *      schema:
  *        type: string
  *      description: the search id
- */ 
+ */
