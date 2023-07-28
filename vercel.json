@@ -6,17 +6,6 @@
       "source": "/",
       "destination": "/api",
       "permanent": false
-    },
-    {
-      "source": "/api",
-      "destination": "/api/user",
-      "permanent": false
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/server.js"
     }
   ]
 }
