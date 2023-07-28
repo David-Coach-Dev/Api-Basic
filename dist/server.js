@@ -34,13 +34,8 @@ class ServerDc extends server_config_1.ConfigServer {
         this.swaggerSpec = (0, swagger_jsdoc_1.default)(swagger_config_1.swaggerConfig);
         this.pathToSwaggerUi = require('swagger-ui-dist').absolutePath();
         this.options = {
-            // customJs: [
-            //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
-            //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js',
-            // ],
-            path: '/docs',
-            explorer: true,
-            swaggerUi: true,
+            explorer: false,
+            swaggerUi: false,
             docExpansion: 'list',
             validatorUrl: null,
             filter: false,
@@ -49,7 +44,7 @@ class ServerDc extends server_config_1.ConfigServer {
             customSiteTitle: 'Api Rest Full Dynamic',
             customfavIcon: './asset/ico/favicon.ico',
             customSiteUrl: 'http://localhost.8000',
-            //customCss: '.swagger-ui .topbar { display: none }',
+            customCss: '.topbar { display: none }',
             customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
             customJsUrl: [
                 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
@@ -65,8 +60,8 @@ class ServerDc extends server_config_1.ConfigServer {
         this.app.use('/', this.start());
         this.app.use('/api', this.api());
         this.app.use('/docs', swagger_ui_express_1.default.serve);
-        this.app.use('/docs', swagger_ui_express_1.default.setup(this.swaggerSpec, this.options));
         this.app.use(express_1.default.static(this.pathToSwaggerUi));
+        this.app.use('/docs', swagger_ui_express_1.default.setup(this.swaggerSpec, this.options));
         this.listen();
     }
     api() {
@@ -95,7 +90,7 @@ class ServerDc extends server_config_1.ConfigServer {
     }
     listen() {
         this.app.listen(this.port, () => {
-            console.log(`✅ Server 🆗 is running 💯 on http://localhost:${this.port}.`);
+            console.log(`✅ Server 🆗 is running 💯 on http://localhost:${this.port}`);
         });
     }
 }

@@ -21,6 +21,7 @@ class ServerDc extends ConfigServer{
   private port: number = this.getNumberEnv('PORT');
   private swaggerSpec = swaggerJSDoc(swaggerConfig);
   private pathToSwaggerUi = require('swagger-ui-dist').absolutePath()
+
   constructor() {
     super();
     this.app.use(express.json());
@@ -32,8 +33,8 @@ class ServerDc extends ConfigServer{
     this.app.use('/', this.start());
     this.app.use('/api', this.api());
     this.app.use('/docs', swaggerUI.serve)
-    this.app.use('/docs', swaggerUI.setup(this.swaggerSpec, this.options));
     this.app.use(express.static(this.pathToSwaggerUi))
+    this.app.use('/docs', swaggerUI.setup(this.swaggerSpec, this.options));
     this.listen();
   }
 
@@ -49,14 +50,8 @@ class ServerDc extends ConfigServer{
     ];
   };
   options = {
-    // customJs: [
-
-    //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
-    //   'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js',
-    // ],
-    path: '/docs',
-    explorer: true,
-    swaggerUi: true,
+    explorer: false,
+    swaggerUi: false,
     docExpansion: 'list',
     validatorUrl: null,
     filter: false,
@@ -65,7 +60,7 @@ class ServerDc extends ConfigServer{
     customSiteTitle: 'Api Rest Full Dynamic',
     customfavIcon: './asset/ico/favicon.ico',
     customSiteUrl: 'http://localhost.8000',
-   //customCss: '.swagger-ui .topbar { display: none }',
+    customCss: '.topbar { display: none }',
     customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
     customJsUrl: [
       'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
@@ -84,7 +79,7 @@ class ServerDc extends ConfigServer{
 
   public listen() {
     this.app.listen(this.port, () => {
-      console.log(`✅ Server 🆗 is running 💯 on http://localhost:${this.port}.`);
+      console.log(`✅ Server 🆗 is running 💯 on http://localhost:${this.port}`);
     })
   }
 

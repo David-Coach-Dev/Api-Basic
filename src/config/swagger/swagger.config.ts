@@ -53,6 +53,6 @@ export const swaggerConfig = {
     produces: ['application/json'],
   },
   apis: [
-    "./dist/**/**/*.doc.js",
+    "dist/**/**/*.doc.js",
   ],
 };
