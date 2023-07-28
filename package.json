@@ -6,7 +6,7 @@
   "main": "dist/server.js",
   "scripts": {
     "start": "pnpm build && node dist/server.js && echo \"✅ Proceso realizado con éxito.\"",
-    "BDist":"clear && rmdir /s dist && pnpm build && echo \"✅ Proceso realizado con éxito.\"",
+    "bdist":"clear && rmdir /s dist && echo \"✅ Borrado realizado con éxito.\" && pnpm build ",
     "build": "tsc && echo \"✅ Proceso realizado con éxito.\"",
     "dev": "tsc && concurrently \"tsc -w\" \"nodemon dist/server.js\"",
     "watch": "tsc && concurrently \"tsc -w\" \"node --watch dist/server.js\"",
