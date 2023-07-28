@@ -4,7 +4,7 @@
   "redirects": [
     {
       "source": "/(.*)",
-      "destination": "/dist/server.js",
+      "destination": "/",
       "permanent": false
     },
     {
