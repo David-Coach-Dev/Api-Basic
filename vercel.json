@@ -1,10 +1,17 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "version": 2,
-  "rewrites": [
+  "name": "Api Rest Full Dynamic",
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "dist/server.js"
+      "src": "dist/server.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/app.js"
     }
   ],
   "redirects": [

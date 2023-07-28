@@ -1,12 +1,10 @@
 import express from 'express';
 import cors from 'cors';
-import path from 'path';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import "reflect-metadata";
 import swaggerJSDoc from 'swagger-jsdoc';
 import swaggerUI from 'swagger-ui-express';
-import swaggerServer from 'express-swagger-ui-router';
 import { DataSource } from 'typeorm';
 import { ConfigServer } from './config/server/server.config';
 import { RaizRouter } from './raiz/router/raiz.router';
