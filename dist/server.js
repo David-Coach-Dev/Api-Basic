@@ -33,16 +33,15 @@ class ServerDc extends server_config_1.ConfigServer {
         this.port = this.getNumberEnv('PORT');
         this.swaggerSpec = (0, swagger_jsdoc_1.default)(swagger_config_1.swaggerConfig);
         this.options = {
-            explorer: false,
-            swaggerUi: false,
+            explorer: true,
+            swaggerUi: true,
             docExpansion: 'list',
             validatorUrl: null,
-            filter: false,
-            apisSorter: 'alpha',
+            filter: true,
             deepLinking: true,
             customSiteTitle: 'Api Rest Full Dynamic',
-            customfavIcon: './asset/ico/favicon.ico',
-            customCss: '.topbar { display: none }',
+            customfavIcon: './src/asset/ico/favicon.ico',
+            customCss: ' .swagger-ui .topbar {display: none;}',
             /*customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
             customJsUrl: [
               'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',

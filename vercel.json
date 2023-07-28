@@ -18,6 +18,11 @@
     {
       "src": "/(.*)",
       "dest": "dist/server.js"
+    },
+    {
+      "src": "/docs/",
+      "dest": "dist/server.js"
     }
+
   ]
 }

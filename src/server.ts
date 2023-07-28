@@ -53,14 +53,14 @@ class ServerDc extends ConfigServer{
     filter: true,
     deepLinking: true,
     customSiteTitle: 'Api Rest Full Dynamic',
-    customfavIcon: './asset/ico/favicon.ico',
-    customCss: '.topbar { display: none }',
+    customfavIcon: './src/asset/ico/favicon.ico',
+    customCss: ' .swagger-ui .topbar {display: none;}',
     /*customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
     customJsUrl: [
       'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
       'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js',
     ],*/
-  };
+  };  
 
   async dbConnection(): Promise<void> {
     try {
