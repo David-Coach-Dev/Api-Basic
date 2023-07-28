@@ -32,7 +32,7 @@ class ServerDc extends ConfigServer{
     this.app.use('/', this.start());
     this.app.use('/api', this.api());
     this.app.use('/docs', swaggerUI.serve)
-    this.app.use('/docs', swaggerUI.setup(this.swaggerSpec, this.options));
+    this.app.get('/docs', swaggerUI.setup(this.swaggerSpec, this.options));
     this.listen();
   }
 

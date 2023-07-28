@@ -59,7 +59,7 @@ class ServerDc extends server_config_1.ConfigServer {
         this.app.use('/', this.start());
         this.app.use('/api', this.api());
         this.app.use('/docs', swagger_ui_express_1.default.serve);
-        this.app.use('/docs', swagger_ui_express_1.default.setup(this.swaggerSpec, this.options));
+        this.app.get('/docs', swagger_ui_express_1.default.setup(this.swaggerSpec, this.options));
         this.listen();
     }
     api() {
