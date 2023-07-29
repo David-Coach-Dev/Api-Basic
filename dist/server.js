@@ -17,37 +17,18 @@ const cors_1 = __importDefault(require("cors"));
 const helmet_1 = __importDefault(require("helmet"));
 const morgan_1 = __importDefault(require("morgan"));
 require("reflect-metadata");
-const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
-const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const typeorm_1 = require("typeorm");
 const server_config_1 = require("./config/server/server.config");
 const raiz_router_1 = require("./raiz/router/raiz.router");
 const start_router_1 = require("./start/router/start.router");
 const user_router_1 = require("./user/router/user.router");
 const cors_config_1 = require("./config/cors/cors.config");
-const swagger_config_1 = require("./config/swagger/swagger.config");
+const swagger = require('./config/swagger/swagger.config');
 class ServerDc extends server_config_1.ConfigServer {
     constructor() {
         super();
         this.app = (0, express_1.default)();
         this.port = this.getNumberEnv('PORT');
-        this.swaggerSpec = (0, swagger_jsdoc_1.default)(swagger_config_1.swaggerConfig);
-        this.options = {
-            explorer: true,
-            swaggerUi: true,
-            docExpansion: 'list',
-            validatorUrl: null,
-            filter: true,
-            deepLinking: true,
-            customSiteTitle: 'Api Rest Full Dynamic',
-            customfavIcon: './src/asset/ico/favicon.ico',
-            customCss: ' .swagger-ui .topbar {display: none;}',
-            /*customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
-            customJsUrl: [
-              'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
-              'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js',
-            ],*/
-        };
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: true }));
         this.dbConnection();
@@ -56,8 +37,7 @@ class ServerDc extends server_config_1.ConfigServer {
         this.app.use((0, cors_1.default)(cors_config_1.corsConfig));
         this.app.use('/', this.start());
         this.app.use('/api', this.api());
-        this.app.use('/docs', swagger_ui_express_1.default.serve);
-        this.app.get('/docs', swagger_ui_express_1.default.setup(this.swaggerSpec, this.options));
+        this.app.use('/docs', swagger.middleware, swagger.controller);
         this.listen();
     }
     api() {
