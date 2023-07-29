@@ -1,5 +1,5 @@
 /**
- * @openapi
+ * @swagger
  * components:
  *  schemas:
  *    User:
@@ -18,7 +18,7 @@
  *   */
 
 /**
- * @openapi
+ * @swagger
  *  /user:
  *    get:
  *      tags: [user]
