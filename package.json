@@ -5,7 +5,7 @@
   "description": "Api Rest Full Dynamic",
   "main": "./dist/server.js",
   "scripts": {
-    "start": "node server.js && echo \"✅ Proceso realizado con éxito.\"",
+    "start": "node dist/server.js && echo \"✅ Proceso realizado con éxito.\"",
     "bdist": "clear && rmdir /s dist && echo \"✅ Borrado realizado con éxito.\" && pnpm build ",
     "build": "tsc && echo \"✅ Proceso realizado con éxito.\"",
     "dev": "tsc && concurrently \"tsc -w\" \"nodemon server.js\"",
