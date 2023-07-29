@@ -3,6 +3,7 @@ const swaggerUI = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
 const projectInfo = require('../../../package.json');
 const swaggerConfig = {
+    failOnErrors: true,
     definition: {
         openapi: '3.0.0',
         info: {
@@ -50,7 +51,7 @@ const swaggerConfig = {
         produces: ['application/json'],
     },
     apis: [
-        "dist/**/**/*.doc.js",
+        "dist/**/**/*.doc.{ts,js}",
     ],
 };
 const swaggerOptions = {
