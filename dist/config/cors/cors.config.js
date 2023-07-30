@@ -13,6 +13,6 @@ exports.corsConfig = {
             callback(new Error('Acceso no permitido por CORS'));
         }
     },
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'HEAD', 'CONNECT'],
-    allowedHeaders: ['Content-Type', 'Authorization', ''],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Aplication/JSON'],
 };

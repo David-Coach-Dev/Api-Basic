@@ -33,27 +33,32 @@ const swaggerConfig = {
           basePath: {
             enum: ['api', 'docs'],
             default: 'api',
-            description:
-              'this value is assigned by the service provider'
+            description: 'this value is assigned by the service provider'
           },
           versionApi: {
             enum: ['v1', 'v2'],
             default: 'v1',
-            description:
-              'this value is assigned by the version api provider'
+            description: 'this value is assigned by the version api provider'
           }
         }
       },
       {
-        url: 'https://api-basic.vercel.app/api',
+        url: 'https://api-basic.vercel.app/{basePath}',
         description: 'The server api environment production',
+        variables: {
+          basePath: {
+            enum: ['api', 'docs'],
+            default: 'api',
+            description: 'this value is assigned by the service provider'
+          },
+        }
       }
     ],
     consumes: ['application/json'],
     produces: ['application/json'],
   },
   apis: [
-    "*.doc.js",
+    "dist/**/doc/*.doc.js",
   ],
 }
 
@@ -65,12 +70,13 @@ const swaggerOptions = {
     filter: true,
     deepLinking: true,
     customSiteTitle: 'Api Rest Full Dynamic',
-    //customfavIcon: './src/asset/ico/favicon.ico',
+    customfavIcon: './src/asset/ico/favicon.ico',
     customCss: ' .swagger-ui .topbar {display: none;}',
     customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
     customJsUrl: [
       'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
       'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-init.js',
     ]
 };
 
