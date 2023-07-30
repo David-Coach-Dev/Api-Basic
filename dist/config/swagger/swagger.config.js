@@ -51,7 +51,7 @@ const swaggerConfig = {
         produces: ['application/json'],
     },
     apis: [
-        "{dist,src}/**/**/*.doc.{js,ts}",
+        "**/**/*.doc.js",
     ],
 };
 const swaggerOptions = {
