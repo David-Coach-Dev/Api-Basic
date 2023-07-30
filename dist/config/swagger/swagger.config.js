@@ -65,10 +65,10 @@ const swaggerOptions = {
     customfavIcon: './src/asset/ico/favicon.ico',
     customCss: ' .swagger-ui .topbar {display: none;}',
     customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
-    /*customJsUrl: [
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js',
-    ],*/
+    customJsUrl: [
+        'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js',
+        'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js',
+    ]
 };
 const config = swaggerJsDoc(swaggerConfig);
 const middleware = swaggerUI.serve;
