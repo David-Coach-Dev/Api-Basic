@@ -5,7 +5,11 @@
     {
       "src": "dist/server.js",
       "use": "@vercel/node",
-      "includeFiles": "dist/**/**/*.js"
+      "config": {
+        "includeFiles": [
+          "dist/**/**/*.js"
+        ]
+      }
     }
   ],
   "routes": [
