@@ -27,11 +27,11 @@ const swaggerConfig = {
                 description: 'The server api environment development',
                 variables: {
                     port: {
-                        enum: ['8000', '7000'],
+                        enum: ['8000', '3000'],
                         default: '8000'
                     },
                     basePath: {
-                        enum: ['api', 'api-docs'],
+                        enum: ['api', 'docs'],
                         default: 'api',
                         description: 'this value is assigned by the service provider'
                     },
@@ -51,7 +51,7 @@ const swaggerConfig = {
         produces: ['application/json'],
     },
     apis: [
-        "**/**/*.doc.js",
+        "*.doc.js",
     ],
 };
 const swaggerOptions = {
@@ -62,7 +62,7 @@ const swaggerOptions = {
     filter: true,
     deepLinking: true,
     customSiteTitle: 'Api Rest Full Dynamic',
-    customfavIcon: './src/asset/ico/favicon.ico',
+    //customfavIcon: './src/asset/ico/favicon.ico',
     customCss: ' .swagger-ui .topbar {display: none;}',
     customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css',
     customJsUrl: [
