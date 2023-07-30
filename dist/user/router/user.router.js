@@ -12,3 +12,4 @@ class UserRouter extends router_1.BaseRouter {
     }
 }
 exports.UserRouter = UserRouter;
+//# sourceMappingURL=user.router.js.map

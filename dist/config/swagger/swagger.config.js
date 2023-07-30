@@ -82,3 +82,4 @@ const config = swaggerJsDoc(swaggerConfig);
 const middleware = swaggerUI.serve;
 const controller = swaggerUI.setup(config, swaggerOptions);
 module.exports = { middleware, controller };
+//# sourceMappingURL=swagger.config.js.map

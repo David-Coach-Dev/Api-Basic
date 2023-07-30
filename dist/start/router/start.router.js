@@ -12,3 +12,4 @@ class StartRouter extends router_1.BaseRouter {
     }
 }
 exports.StartRouter = StartRouter;
+//# sourceMappingURL=start.router.js.map

@@ -136,3 +136,4 @@ function setResponseContentType(res) {
     const contentTypeHeader = contentTypes.join(', ');
     res.set('Content-Type', contentTypeHeader);
 }
+//# sourceMappingURL=whilelist.middleware.js.map

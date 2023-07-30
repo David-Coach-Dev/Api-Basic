@@ -10,3 +10,4 @@ serverapp.get('/api/v2/posts', function (req, res) {
   res.redirect(301, '/api/posts');
 });
 */
+//# sourceMappingURL=response.middleware.js.map

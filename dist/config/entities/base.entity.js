@@ -34,3 +34,4 @@ __decorate([
     }),
     __metadata("design:type", Date)
 ], BaseEntity.prototype, "updatedAt", void 0);
+//# sourceMappingURL=base.entity.js.map

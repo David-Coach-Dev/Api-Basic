@@ -71,3 +71,4 @@ class ServerDc extends server_config_1.ConfigServer {
     }
 }
 const server = new ServerDc();
+//# sourceMappingURL=server.js.map

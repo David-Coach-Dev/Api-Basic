@@ -16,3 +16,4 @@ exports.corsConfig = {
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization', 'Aplication/JSON'],
 };
+//# sourceMappingURL=cors.config.js.map

@@ -11,3 +11,4 @@ class StartController {
     }
 }
 exports.StartController = StartController;
+//# sourceMappingURL=start.controller.js.map
