@@ -1,5 +1,6 @@
 # Logs
 .lh
+vercel-dev.json
 .vscode
 public
 mysql/
