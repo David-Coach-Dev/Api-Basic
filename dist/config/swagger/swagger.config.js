@@ -2,6 +2,7 @@
 const swaggerUI = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
 const projectInfo = require('../../../package.json');
+const icon = require('../../assets/img/logo.png');
 const swaggerConfig = {
     failOnErrors: true,
     definition: {
@@ -69,7 +70,7 @@ const swaggerOptions = {
     filter: true,
     deepLinking: true,
     customSiteTitle: 'Api Rest Full Dynamic',
-    customfavIcon: 'dist/asset/img/logo.png',
+    customfavIcon: { icon: icon },
     customCss: ' .swagger-ui .topbar {display: none;}',
     customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css'
 };
