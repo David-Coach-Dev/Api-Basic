@@ -19,7 +19,14 @@
     "api basic",
     "express",
     "node",
-    "typescript"
+    "typescript",
+    "swagger",
+    "swagger-ui",
+    "documentation",
+    "docs",
+    "web",
+    "Dc Dev",
+    "David Coach Dev"
   ],
   "author": {
     "name": "Dc Dev -> David Coach Dev.",
