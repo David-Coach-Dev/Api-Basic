@@ -1,6 +1,9 @@
 const swaggerUI = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
 const projectInfo = require('../../../package.json');
+const env = process.env.NODE_ENV;
+
+const serverUrl = env?.trim() === "production" ? 'https://api-basic.vercel.app/{basePath}' : 'http://localhost:8000/{basePath}';
 
 const swaggerConfig = {
   failOnErrors: true,
@@ -24,31 +27,11 @@ const swaggerConfig = {
     },
     servers: [
       {
-        url: 'http://localhost:{port}/{basePath}',
-        description: 'The server api environment development',
-        variables: {
-          port: {
-            enum: ['8000', '3000'],
-            default: '8000'
-          },
-          basePath: {
-            enum: ['api', 'docs'],
-            default: 'api',
-            description: 'this value is assigned by the service provider'
-          },
-          versionApi: {
-            enum: ['v1', 'v2'],
-            default: 'v1',
-            description: 'this value is assigned by the version api provider'
-          }
-        }
-      },
-      {
-        url: 'https://api-basic.vercel.app/{basePath}',
-        description: 'The server api environment production',
+        url: serverUrl,
+        description: 'The server api environment ' + (env?.trim()==="production" ? 'production' : 'development'),
         variables: {
           basePath: {
-            enum: ['api', 'docs'],
+            enum: ['api'],
             default: 'api',
             description: 'this value is assigned by the service provider'
           },

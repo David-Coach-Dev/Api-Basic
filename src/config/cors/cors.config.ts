@@ -1,16 +1,15 @@
-const whitelist = ['localhost:8000', 'https://api-basic.vercel.app'];
+import { CorsOptions } from 'cors';
 
-export const corsConfig = {
-  origin: function (origin: any, callback: any) {
-    // Verificar si el origen está en la lista blanca
-    console.log('ori - >', origin);
-    if (whitelist.indexOf(origin) !== -1 || !origin) {
+const whitelist = ['http://localhost:8000', 'https://api-basic.vercel.app'];
+
+export const corsConfig: CorsOptions = {
+  origin: (origin: string | undefined, callback) => {
+    if (!origin || whitelist.some((allowedOrigin) => origin.startsWith(allowedOrigin))) {
       callback(null, true);
     } else {
-      callback(new Error('Acceso no permitido por CORS'));
+      callback(new Error('Not allowed by CORS'));
     }
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization','Aplication/JSON'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Application/JSON'],
 };
-

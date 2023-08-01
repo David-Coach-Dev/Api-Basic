@@ -10,7 +10,7 @@
     "build": "echo \"🔍 Building...\" && tsc && echo \"✅ Build realizado con éxito.\"",
     "dev": "tsc && concurrently \"tsc -w\" \"nodemon server.js\"",
     "watch": "tsc && concurrently \"tsc -w\" \"node --watch dist/server.js\"",
-    "prod": "SET NODE_ENV=production && pnpm start && echo \"✅ Proceso realizado con éxito.\"",
+    "prod": "set NODE_ENV=production && pnpm start && echo \"✅ Proceso realizado con éxito.\"",
     "test": "clear && echo \"✅ Proceso por implementar.\""
   },
   "keywords": [
