@@ -3,25 +3,27 @@
  * @swagger
  * components:
  *  schemas:
- *    rol:
+ *    rols:
  *      type: object
  *      properties:
- *        id:
- *          type: string
- *          description: the auto-generated id of rol
  *        rol:
  *          type: string
  *          description: the name of the rol
+ *      additionalProperties:
+ *        $ref: '#/components/schemas/BaseEntity'
  *      required:
  *        - rol
  *      example:
+ *        id: uuid()
  *        rol: Admin
+ *        createdAt: 2021-01-01T00:00:00.000Z
+ *        updateAt: 2021-01-01T00:00:00.000Z
  */
 /**
  * @swagger
- *  /rol:
+ *  /rols:
  *    get:
- *      tags: [rol]
+ *      tags: [rols]
  *      summary: Get all users
  *      description:
  *        Get all users
@@ -33,7 +35,7 @@
  *              schema:
  *                type: array
  *                items:
- *                  $ref: '#/components/schemas/rol'
+ *                  $ref: '#/components/schemas/rols'
  *        404:
  *          description: Not Found
  *          content:
@@ -51,4 +53,4 @@
  *                items:
  *                  $ref: '#/components/schemas/NotServer'
  */ 
-//# sourceMappingURL=rol.doc.js.map
+//# sourceMappingURL=rols.doc.js.map

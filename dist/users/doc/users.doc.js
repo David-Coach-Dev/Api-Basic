@@ -13,12 +13,39 @@
  *        lastName:
  *          type: string
  *          description: the last name of the user
- *        jobPosition:
+ *        userName:
  *          type: string
- *          description: the job position of the user
+ *          description: the user name of the user
+ *        email:
+ *          type: string
+ *          description: the email of the user
+ *        password:
+ *          type: string
+ *          description: the password of the user
+ *        city:
+ *          type: string
+ *          description: the city of the user
+ *        province:
+ *          type: string
+ *          description: the province of the user
+ *        country:
+ *          type: string
+ *          description: the country of the user
  *        numberPhone:
  *          type: number
  *          description: the phone number of the user
+ *        rol:
+ *          type: string
+ *          description: the rol of the user
+ *        status:
+ *          type: string
+ *          description: the status of the user
+ *        avatar:
+ *          type: string
+ *          description: the avatar of the user
+ *        token:
+ *          type: string
+ *          description: the token of the user
  *      additionalProperties:
  *        $ref: '#/components/schemas/BaseEntity'
  *      required:
@@ -32,8 +59,18 @@
  *        id: uuid()
  *        name: Dc
  *        lastName: Dev
- *        jobPosition: Developer
+ *        userName: dcdev
+ *        email: dcdevty@gmail.com
+ *        password: 123456
+ *        city: Guayaquil
+ *        province: Guayas
+ *        country: Ecuador
  *        numberPhone: 123456789
+ *        jobPosition: Developer
+ *        rol: Admin
+ *        status: Active
+ *        avatar: https://img.com/avatr1.png
+ *        token: 123456789
  *        createdAt: 2021-01-01T00:00:00.000Z
  *        updateAt: 2021-01-01T00:00:00.000Z
  *   */
