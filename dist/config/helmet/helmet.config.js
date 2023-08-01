@@ -31,7 +31,8 @@ exports.helmetConfig = {
         permittedPolicies: 'none',
     },
     referrerPolicy: {
-        policy: 'no-referrer',
+        policy: 'strict-origin-when-cross-origin',
     },
+    dnsPrefetchControl: false,
 };
 //# sourceMappingURL=helmet.config.js.map

@@ -39,6 +39,7 @@ class ServerDc extends server_config_1.ConfigServer {
         this.app.use('/', this.start());
         this.app.use('/api', this.api());
         this.app.use('/docs', swagger.middleware, swagger.controller);
+        this.app.use('*', this.start());
         this.listen();
     }
     api() {
