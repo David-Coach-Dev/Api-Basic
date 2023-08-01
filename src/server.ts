@@ -7,7 +7,7 @@ import { DataSource } from 'typeorm';
 import { ConfigServer } from './config/server/server.config';
 import { RaizRouter } from './raiz/router/raiz.router';
 import { StartRouter } from './start/router/start.router';
-import { UserRouter } from './user/router/user.router';
+import { UsersRouter } from './users/router/users.router';
 import { corsConfig } from './config/cors/cors.config';
 const swagger = require('./config/swagger/swagger.config');
 
@@ -31,7 +31,7 @@ class ServerDc extends ConfigServer{
 
   api(): Array<express.Router> {
     return [
-      new UserRouter().router,
+      new UsersRouter().router,
       new RaizRouter().router,
     ];
   };

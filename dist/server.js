@@ -21,7 +21,7 @@ const typeorm_1 = require("typeorm");
 const server_config_1 = require("./config/server/server.config");
 const raiz_router_1 = require("./raiz/router/raiz.router");
 const start_router_1 = require("./start/router/start.router");
-const user_router_1 = require("./user/router/user.router");
+const users_router_1 = require("./users/router/users.router");
 const cors_config_1 = require("./config/cors/cors.config");
 const swagger = require('./config/swagger/swagger.config');
 class ServerDc extends server_config_1.ConfigServer {
@@ -42,7 +42,7 @@ class ServerDc extends server_config_1.ConfigServer {
     }
     api() {
         return [
-            new user_router_1.UserRouter().router,
+            new users_router_1.UsersRouter().router,
             new raiz_router_1.RaizRouter().router,
         ];
     }

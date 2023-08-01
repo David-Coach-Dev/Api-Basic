@@ -8,8 +8,9 @@ const swaggerConfig = {
     openapi: '3.0.0',
     info: {
       title: 'Sismadeq - Api Rest Full Dynamic.',
-      version: projectInfo.version,
+      summary: "Un Sistema De Manejo de Equipos.",
       description: 'Sistema De Manejo de Equipos - Sismadeq - Api Rest Full Dynamic based on the OpenAPI 3.0 Specification (OAS3). <br /><br />By',
+      termsOfService: 'http://swagger.io/terms/',
       contact: {
         name: projectInfo.author.name,
         url: projectInfo.author.url,
@@ -17,9 +18,9 @@ const swaggerConfig = {
       },
       license: {
         name: projectInfo.license,
-        identifier: projectInfo.license,
         url: 'https://opensource.org/license/mit/'
-      }
+      },
+      version: projectInfo.version,
     },
     servers: [
       {
@@ -71,7 +72,7 @@ const swaggerOptions = {
   deepLinking: true,
   customSiteTitle: 'Api Rest Full Dynamic',
   customFavIcon: 'dist/asset/img/logo.png',
-  customCss: ' .swagger-ui .topbar {display: none;}',
+  customCss: '.swagger-ui .topbar {display: none;}',
   customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css'
 };
 

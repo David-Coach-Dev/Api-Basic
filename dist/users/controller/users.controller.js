@@ -1,12 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserController = void 0;
-class UserController {
+exports.UsersController = void 0;
+class UsersController {
     getUsers(req, res) {
         res.status(200).json({
             Msn: "Dc Dev"
         });
     }
 }
-exports.UserController = UserController;
-//# sourceMappingURL=user.controller.js.map
+exports.UsersController = UsersController;
+//# sourceMappingURL=users.controller.js.map

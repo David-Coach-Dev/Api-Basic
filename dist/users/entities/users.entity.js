@@ -11,7 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserEntity = void 0;
 const typeorm_1 = require("typeorm");
-const base_entity_1 = require("../../config/entities/base.entity");
+const base_entity_1 = require("../../shared/entities/base.entity");
 let UserEntity = exports.UserEntity = class UserEntity extends base_entity_1.BaseEntity {
 };
 __decorate([
@@ -37,6 +37,6 @@ __decorate([
     __metadata("design:type", Number)
 ], UserEntity.prototype, "numberPhone", void 0);
 exports.UserEntity = UserEntity = __decorate([
-    (0, typeorm_1.Entity)({ name: "user" })
+    (0, typeorm_1.Entity)({ name: "users" })
 ], UserEntity);
-//# sourceMappingURL=user.entity.js.map
+//# sourceMappingURL=users.entity.js.map
