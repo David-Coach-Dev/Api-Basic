@@ -30,9 +30,5 @@ exports.helmetConfig = {
     permittedCrossDomainPolicies: {
         permittedPolicies: 'none',
     },
-    referrerPolicy: {
-        policy: 'strict-origin-when-cross-origin',
-    },
-    dnsPrefetchControl: false,
 };
 //# sourceMappingURL=helmet.config.js.map
