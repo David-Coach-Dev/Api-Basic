@@ -29,4 +29,7 @@ export const helmetConfig: HelmetOptions = {
   permittedCrossDomainPolicies: {
     permittedPolicies: 'none',
   },
+  referrerPolicy: {
+    policy: 'strict-origin-when-cross-origin',
+  },
 };
