@@ -13,6 +13,7 @@ export const helmetConfig: HelmetOptions = {
       scriptSrc: ["'self'"],
       scriptSrcAttr: ["'none'"],
       styleSrc: ["'self'", "'unsafe-inline'", "https:"],
+      styleSrcExt: ["'self'", "'unsafe-inline'", "https:"],
       upgradeInsecureRequests: ["'self'"],
       mediaSrc: ["'none'"],
       frameSrc: ["'none'"],
