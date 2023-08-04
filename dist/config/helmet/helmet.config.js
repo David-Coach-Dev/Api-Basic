@@ -5,36 +5,48 @@ exports.helmetConfig = {
     contentSecurityPolicy: {
         directives: {
             defaultSrc: ["'self'", "'unsafe-inline'"],
-            scriptSrc: ["'self'"],
-            styleSrc: ["'self'", "'unsafe-inline'", "'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css'"],
-            imgSrc: ["'self'"],
-            fontSrc: ["'self'"],
+            baseUri: ["'self'"],
+            fontSrc: ["'self'", 'https:', 'data:'],
+            formAction: ["'self'", 'https:', 'data:'],
+            frameAncestors: ["'self'"],
+            imgSrc: ["'self'", 'https:', 'data:'],
             objectSrc: ["'none'"],
+            scriptSrc: ["'self'"],
+            scriptSrcAttr: ["'none'"],
+            styleSrc: ["'self'", "'unsafe-inline'", "https:"],
+            upgradeInsecureRequests: ["'self'"],
             mediaSrc: ["'none'"],
             frameSrc: ["'none'"],
             childSrc: ["'none'"],
             connectSrc: ["'self'"],
         },
+        reportOnly: true,
     },
-    frameguard: {
-        action: 'deny',
+    crossOriginEmbedderPolicy: {
+        policy: "credentialless",
     },
-    hsts: {
-        maxAge: 31536000,
+    crossOriginOpenerPolicy: {
+        policy: "same-origin-allow-popups"
+    },
+    crossOriginResourcePolicy: {
+        policy: "cross-origin",
+    },
+    referrerPolicy: {
+        policy: ["origin", "unsafe-url"],
+    },
+    strictTransportSecurity: {
+        maxAge: 63072000,
         includeSubDomains: true,
         preload: true,
     },
-    noSniff: true,
-    xssFilter: true,
-    referrerPolicy: {
-        policy: 'same-origin',
+    xContentTypeOptions: true,
+    xDnsPrefetchControl: { allow: false },
+    xDownloadOptions: false,
+    xFrameOptions: { action: "sameorigin" },
+    xPermittedCrossDomainPolicies: {
+        permittedPolicies: "by-content-type",
     },
-    dnsPrefetchControl: {
-        allow: false,
-    },
-    hidePoweredBy: true,
-    permittedCrossDomainPolicies: {
-        permittedPolicies: "master-only",
-    },
+    xPoweredBy: false,
+    xXssProtection: false,
 };
 //# sourceMappingURL=helmet.config.js.map
