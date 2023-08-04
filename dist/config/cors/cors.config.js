@@ -11,7 +11,7 @@ exports.corsConfig = {
             callback(new Error('Not allowed by CORS'));
         }
     },
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'Application/JSON'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'HEAD', 'CONNECT', 'TRACE'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Application/JSON', 'Text/Plain', 'X-Requested-With', 'Text/HTML'],
 };
 //# sourceMappingURL=cors.config.js.map
