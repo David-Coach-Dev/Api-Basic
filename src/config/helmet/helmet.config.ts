@@ -5,9 +5,9 @@ export const helmetConfig: HelmetOptions = {
     directives: {
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "https://cdnjs.cloudflare.com"],
       styleSrcElem: ["'self'", "'unsafe-inline'"],
-      imgSrc: ["'self'"],
+      imgSrc: ["'self'", "data:"],
       fontSrc: ["'self'"],
       objectSrc: ["'none'"],
       mediaSrc: ["'none'"],
