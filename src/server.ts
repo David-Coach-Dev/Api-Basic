@@ -21,7 +21,7 @@ class ServerDc extends ConfigServer{
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.dbConnection();
-    this.app.use(helmet(helmetConfig));
+    this.app.use(helmet());
     this.app.use(morgan('dev'));
     this.app.use(cors(corsConfig));
     this.app.use('/', this.start());

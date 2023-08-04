@@ -23,7 +23,6 @@ const raiz_router_1 = require("./raiz/router/raiz.router");
 const start_router_1 = require("./start/router/start.router");
 const users_router_1 = require("./users/router/users.router");
 const cors_config_1 = require("./config/cors/cors.config");
-const helmet_config_1 = require("./config/helmet/helmet.config");
 const swagger = require('./config/swagger/swagger.config');
 class ServerDc extends server_config_1.ConfigServer {
     constructor() {
@@ -33,7 +32,7 @@ class ServerDc extends server_config_1.ConfigServer {
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: true }));
         this.dbConnection();
-        this.app.use((0, helmet_1.default)(helmet_config_1.helmetConfig));
+        this.app.use((0, helmet_1.default)());
         this.app.use((0, morgan_1.default)('dev'));
         this.app.use((0, cors_1.default)(cors_config_1.corsConfig));
         this.app.use('/', this.start());
