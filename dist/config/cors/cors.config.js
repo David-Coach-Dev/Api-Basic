@@ -11,7 +11,9 @@ exports.corsConfig = {
             callback(new Error('Not allowed by CORS'));
         }
     },
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS', 'HEAD', 'CONNECT', 'TRACE'],
-    allowedHeaders: ['Content-Type', 'Authorization', 'Application/JSON', 'Text/Plain', 'X-Requested-With', 'Text/HTML'],
+    methods: ['GET', 'PUT', 'POST', 'DELETE', 'OPTIONS'],
+    optionsSuccessStatus: 200,
+    credentials: true,
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With', 'device-remember-token', 'Access-Control-Allow-Origin', 'Origin', 'Accept', 'Application/JSON', 'Text/Plain', 'Text/HTML', 'application/x-www-form-urlencoded', 'X-CSRF-Token', 'Accept-Version', 'Content-Length', 'Content-MD5', 'Date', 'Data', 'X-Api-Version', 'X-File-Name', 'charset=utf-8'],
 };
 //# sourceMappingURL=cors.config.js.map

@@ -11,6 +11,8 @@ import { UsersRouter } from './users/router/users.router';
 import { corsConfig } from './config/cors/cors.config';
 import { helmetConfig } from './config/helmet/helmet.config';
 const swagger = require('./config/swagger/swagger.config');
+const favicon = require('serve-favicon');
+const path = require('path');
 
 class ServerDc extends ConfigServer{
   public app: express.Application = express();
@@ -24,6 +26,7 @@ class ServerDc extends ConfigServer{
     this.app.use(helmet(helmetConfig));
     this.app.use(morgan('dev'));
     this.app.use(cors(corsConfig));
+    this.app.use(favicon(path.join(__dirname, '/asset/ico', 'favicon.ico')))
     this.app.use('/', this.start());
     this.app.use('/api', this.api());
     this.app.use('/docs', swagger.middleware, swagger.controller);
