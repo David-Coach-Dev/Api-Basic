@@ -4,7 +4,7 @@ exports.helmetConfig = void 0;
 exports.helmetConfig = {
     contentSecurityPolicy: {
         directives: {
-            defaultSrc: ["'self'"],
+            defaultSrc: ["'self'", "'unsafe-inline'"],
             scriptSrc: ["'self'"],
             styleSrc: ["'self'", "'unsafe-inline'"],
             imgSrc: ["'self'"],

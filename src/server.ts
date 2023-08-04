@@ -9,6 +9,7 @@ import { RaizRouter } from './raiz/router/raiz.router';
 import { StartRouter } from './start/router/start.router';
 import { UsersRouter } from './users/router/users.router';
 import { corsConfig } from './config/cors/cors.config';
+import { helmetConfig } from './config/helmet/helmet.config';
 const swagger = require('./config/swagger/swagger.config');
 
 class ServerDc extends ConfigServer{
@@ -20,7 +21,7 @@ class ServerDc extends ConfigServer{
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.dbConnection();
-    this.app.use(helmet());
+    this.app.use(helmet(helmetConfig));
     this.app.use(morgan('dev'));
     this.app.use(cors(corsConfig));
     this.app.use('/', this.start());

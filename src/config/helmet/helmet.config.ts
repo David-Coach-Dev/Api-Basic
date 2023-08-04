@@ -3,7 +3,7 @@ import { HelmetOptions } from 'helmet';
 export const helmetConfig: HelmetOptions = {
   contentSecurityPolicy: {
     directives: {
-      defaultSrc: ["'self'"],
+      defaultSrc: ["'self'", "'unsafe-inline'"],
       scriptSrc: ["'self'"],
       styleSrc: ["'self'", "'unsafe-inline'"],
       imgSrc: ["'self'"],
