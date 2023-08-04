@@ -5,7 +5,7 @@ export const helmetConfig: HelmetOptions = {
     directives: {
       defaultSrc: ["'self'", "'unsafe-inline'"],
       scriptSrc: ["'self'"],
-      styleSrc: ["'self'","'unsafe-inline'", "'unsafe-eval'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
       imgSrc: ["'self'"],
       fontSrc: ["'self'"],
       objectSrc: ["'none'"],

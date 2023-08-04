@@ -1,6 +1,6 @@
 import { CorsOptions } from 'cors';
 
-const whitelist = ['http://localhost:8000', 'https://api-basic.vercel.app','https://cdnjs.cloudflare.com/'];
+const whitelist = ['http://localhost:8000', 'https://api-basic.vercel.app','https://cdnjs.cloudflare.com'];
 
 export const corsConfig: CorsOptions = {
   origin: (origin: string | undefined, callback) => {
