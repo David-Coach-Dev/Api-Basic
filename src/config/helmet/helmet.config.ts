@@ -30,7 +30,6 @@ export const helmetConfig: HelmetOptions = {
     permittedPolicies: 'none',
   },
   referrerPolicy: {
-    policy: 'strict-origin-when-cross-origin',
+    policy: 'no-referrer',
   },
-  dnsPrefetchControl: false,
 };
