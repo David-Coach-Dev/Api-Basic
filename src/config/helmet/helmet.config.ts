@@ -5,6 +5,7 @@ export const helmetConfig: HelmetOptions = {
     directives: {
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
       imgSrc: ["'self'"],
       fontSrc: ["'self'"],
       objectSrc: ["'none'"],
@@ -14,7 +15,9 @@ export const helmetConfig: HelmetOptions = {
       connectSrc: ["'self'"],
     },
   },
-  hidePoweredBy: true,
+  frameguard: {
+    action: 'deny',
+  },
   hsts: {
     maxAge: 31536000,
     includeSubDomains: true,
@@ -22,13 +25,14 @@ export const helmetConfig: HelmetOptions = {
   },
   noSniff: true,
   xssFilter: true,
-  frameguard: {
-    action: 'deny',
+  referrerPolicy: {
+    policy: 'same-origin',
   },
+  dnsPrefetchControl: {
+    allow: false,
+  },
+  hidePoweredBy: true,
   permittedCrossDomainPolicies: {
     permittedPolicies: 'none',
-  },
-  referrerPolicy: {
-    policy: 'no-referrer',
   },
 };

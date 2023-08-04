@@ -6,6 +6,7 @@ exports.helmetConfig = {
         directives: {
             defaultSrc: ["'self'"],
             scriptSrc: ["'self'"],
+            styleSrc: ["'self'", "'unsafe-inline'"],
             imgSrc: ["'self'"],
             fontSrc: ["'self'"],
             objectSrc: ["'none'"],
@@ -15,7 +16,9 @@ exports.helmetConfig = {
             connectSrc: ["'self'"],
         },
     },
-    hidePoweredBy: true,
+    frameguard: {
+        action: 'deny',
+    },
     hsts: {
         maxAge: 31536000,
         includeSubDomains: true,
@@ -23,14 +26,15 @@ exports.helmetConfig = {
     },
     noSniff: true,
     xssFilter: true,
-    frameguard: {
-        action: 'deny',
+    referrerPolicy: {
+        policy: 'same-origin',
     },
+    dnsPrefetchControl: {
+        allow: false,
+    },
+    hidePoweredBy: true,
     permittedCrossDomainPolicies: {
         permittedPolicies: 'none',
-    },
-    referrerPolicy: {
-        policy: 'no-referrer',
     },
 };
 //# sourceMappingURL=helmet.config.js.map
