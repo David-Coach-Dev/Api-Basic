@@ -9,7 +9,6 @@ import { RaizRouter } from './raiz/router/raiz.router';
 import { StartRouter } from './start/router/start.router';
 import { UsersRouter } from './users/router/users.router';
 import { corsConfig } from './config/cors/cors.config';
-import { helmetConfig } from './config/helmet/helmet.config';
 const swagger = require('./config/swagger/swagger.config');
 
 class ServerDc extends ConfigServer{
