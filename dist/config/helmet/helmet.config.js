@@ -6,8 +6,7 @@ exports.helmetConfig = {
         directives: {
             defaultSrc: ["'self'"],
             scriptSrc: ["'self'"],
-            styleSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "'strict-dynamic'", "cdnjs.cloudflare.com"],
-            styleSrcElem: ["'self'", "cdnjs.cloudflare.com"],
+            styleSrc: ["'self'", "'unsafe-inline'"],
             imgSrc: ["'self'"],
             fontSrc: ["'self'"],
             objectSrc: ["'none'"],
@@ -32,7 +31,8 @@ exports.helmetConfig = {
         permittedPolicies: 'none',
     },
     referrerPolicy: {
-        policy: 'no-referrer',
+        policy: 'strict-origin-when-cross-origin',
     },
+    dnsPrefetchControl: false,
 };
 //# sourceMappingURL=helmet.config.js.map
