@@ -26,7 +26,7 @@ export const helmetConfig: HelmetOptions = {
   noSniff: true,
   xssFilter: true,
   referrerPolicy: {
-    policy: 'same-origin',
+    policy: 'strict-origin-when-cross-origin',
   },
   dnsPrefetchControl: {
     allow: false,
