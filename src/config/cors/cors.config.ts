@@ -4,7 +4,7 @@ const whitelist = ['http://localhost:8000', 'https://api-basic.vercel.app','http
 
 export const corsConfig: CorsOptions = {
   origin: (origin: string | undefined, callback) => {
-    if (!origin || whitelist.some((allowedOrigin) => origin.startsWith(allowedOrigin))) {
+    if (!origin || whitelist.indexOf(origin) !== -1 || whitelist.some((allowedOrigin) => origin.startsWith(allowedOrigin))) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
