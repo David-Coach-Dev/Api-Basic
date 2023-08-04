@@ -5,7 +5,7 @@ export const helmetConfig: HelmetOptions = {
     directives: {
       defaultSrc: ["'self'", "'unsafe-inline'"],
       scriptSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'"],
+      styleSrc: ["'self'", "'unsafe-inline'", "'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css'"],
       imgSrc: ["'self'"],
       fontSrc: ["'self'"],
       objectSrc: ["'none'"],
@@ -26,13 +26,13 @@ export const helmetConfig: HelmetOptions = {
   noSniff: true,
   xssFilter: true,
   referrerPolicy: {
-    policy: 'strict-origin-when-cross-origin',
+    policy: 'same-origin',
   },
   dnsPrefetchControl: {
     allow: false,
   },
   hidePoweredBy: true,
   permittedCrossDomainPolicies: {
-    permittedPolicies: 'none',
+    permittedPolicies: "master-only",
   },
 };
