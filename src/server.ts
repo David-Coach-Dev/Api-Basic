@@ -8,7 +8,6 @@ import { ConfigServer } from './config/server/server.config';
 import { RaizRouter } from './raiz/router/raiz.router';
 import { StartRouter } from './start/router/start.router';
 import { UsersRouter } from './users/router/users.router';
-import { corsConfig } from './config/cors/cors.config';
 import { helmetConfig } from './config/helmet/helmet.config';
 const swagger = require('./config/swagger/swagger.config');
 const favicon = require('serve-favicon');
@@ -23,9 +22,9 @@ class ServerDc extends ConfigServer{
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: true }));
     this.dbConnection();
-    this.app.use(helmet(helmetConfig));
     this.app.use(morgan('dev'));
-    this.app.use(cors(corsConfig));
+    this.app.use(helmet(helmetConfig));
+    this.app.use(cors());
     this.app.use(favicon(path.join(__dirname, '/asset/ico', 'favicon.ico')))
     this.app.use('/', this.start());
     this.app.use('/api', this.api());
