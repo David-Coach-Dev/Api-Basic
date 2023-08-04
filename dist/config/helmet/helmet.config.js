@@ -6,7 +6,7 @@ exports.helmetConfig = {
         directives: {
             defaultSrc: ["'self'"],
             scriptSrc: ["'self'"],
-            styleSrc: ["'self'", "'unsafe-inline'"],
+            styleSrc: ["'self'", "'unsafe-inline'", "'unsafe-eval'", "'strict-dynamic'", "'cdnjs.cloudflare.com'"],
             imgSrc: ["'self'"],
             fontSrc: ["'self'"],
             objectSrc: ["'none'"],
