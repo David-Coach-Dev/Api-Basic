@@ -6,7 +6,9 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.controller = exports.middleware = void 0;
 const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
 const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
+const swagger_themes_1 = require("swagger-themes");
 const env = process.env.NODE_ENV;
+const theme = new swagger_themes_1.SwaggerTheme("v3");
 const serverUrl = (env === null || env === void 0 ? void 0 : env.trim()) === "production" ? 'https://api-basic.vercel.app/{basePath}' : 'http://localhost:8000/{basePath}';
 const swaggerConfig = {
     failOnErrors: true,
@@ -16,9 +18,6 @@ const swaggerConfig = {
             title: 'Sismadeq - Api Rest Full Dynamic.',
             summary: "Un Sistema De Manejo de Equipos.",
             description: 'Sistema De Manejo de Equipos - Sismadeq - Api Rest Full Dynamic based on the OpenAPI 3.0 Specification (OAS3). <br /><br />By',
-            main: [
-                "dist/assets/css/SwaggerDark.css",
-            ],
             termsOfService: 'http://swagger.io/terms/',
             contact: {
                 name: 'Dc Dev -> David Coach Dev',
@@ -57,8 +56,8 @@ const swaggerOptions = {
     docExpansion: 'list',
     filter: true,
     customSiteTitle: 'Api Rest Full Dynamic',
-    customCss: '.swagger-ui .topbar {display: none;}',
-    customCssUrl: "dist/assets/css/SwaggerDark.css",
+    customCss: theme.getBuffer("dark") + '.swagger-ui .topbar {display: none;}',
+    customCssUrl: "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css",
     customfavIcon: "dist/assets/ico/favicon.ico"
 };
 const config = (0, swagger_jsdoc_1.default)(swaggerConfig);
