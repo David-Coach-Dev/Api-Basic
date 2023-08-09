@@ -12,7 +12,6 @@ class BaseRouter {
     routes() {
         //routes(): void
     }
-    ;
 }
 exports.BaseRouter = BaseRouter;
 //# sourceMappingURL=router.js.map

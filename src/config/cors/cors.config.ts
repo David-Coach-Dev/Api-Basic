@@ -3,7 +3,6 @@ import { CorsOptions } from 'cors';
 const whitelist = [
   'http://localhost:8000',
   'https://api-basic.vercel.app',
-  'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css'
 ];
 
 const contentTypes = [
@@ -71,14 +70,14 @@ const contentTypes = [
 
 export const corsConfig: CorsOptions = {
   origin: (origin: string | undefined, callback) => {
-    if (!origin || whitelist.indexOf(origin) !== -1) {
+    if (!origin || whitelist.indexOf(origin) !== -1 || whitelist.some((item) => origin?.includes(item))) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
     }
   },
   methods: ['GET', 'PUT', 'POST', 'DELETE','HEAD', 'OPTIONS'],
-  optionsSuccessStatus: 204,
+  optionsSuccessStatus: 200,
   allowedHeaders: contentTypes,
   exposedHeaders: contentTypes,
   maxAge: 63072000,

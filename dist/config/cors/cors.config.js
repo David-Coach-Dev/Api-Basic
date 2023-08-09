@@ -4,7 +4,6 @@ exports.corsConfig = void 0;
 const whitelist = [
     'http://localhost:8000',
     'https://api-basic.vercel.app',
-    'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css'
 ];
 const contentTypes = [
     'Accept',
@@ -70,7 +69,7 @@ const contentTypes = [
 ];
 exports.corsConfig = {
     origin: (origin, callback) => {
-        if (!origin || whitelist.indexOf(origin) !== -1) {
+        if (!origin || whitelist.indexOf(origin) !== -1 || whitelist.some((item) => origin === null || origin === void 0 ? void 0 : origin.includes(item))) {
             callback(null, true);
         }
         else {
@@ -78,7 +77,7 @@ exports.corsConfig = {
         }
     },
     methods: ['GET', 'PUT', 'POST', 'DELETE', 'HEAD', 'OPTIONS'],
-    optionsSuccessStatus: 204,
+    optionsSuccessStatus: 200,
     allowedHeaders: contentTypes,
     exposedHeaders: contentTypes,
     maxAge: 63072000,

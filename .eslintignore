@@ -1,0 +1,15 @@
+.hl/
+.vercel/
+dist/
+mysql/
+node_modules/
+response/
+*.yaml
+*.yml
+.env
+.prodiction.env
+LICENSE
+vercel-dev.json
+vercel.json
+.vercelignore
+```

@@ -51,13 +51,11 @@ class ServerDc extends server_config_1.ConfigServer {
             new raiz_router_1.RaizRouter().router,
         ];
     }
-    ;
     start() {
         return [
             new start_router_1.StartRouter().router,
         ];
     }
-    ;
     dbConnection() {
         return __awaiter(this, void 0, void 0, function* () {
             try {

@@ -12,5 +12,5 @@ export class BaseRouter<T>{
 
   routes(): void {
     //routes(): void
-  };
+  }
 }

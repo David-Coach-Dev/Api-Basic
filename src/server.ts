@@ -39,12 +39,12 @@ class ServerDc extends ConfigServer{
       new UsersRouter().router,
       new RaizRouter().router,
     ];
-  };
+  }
   start(): Array<express.Router> {
     return [
       new StartRouter().router,
     ];
-  };
+  }
 
   async dbConnection(): Promise<void> {
     try {
