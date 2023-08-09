@@ -5,7 +5,7 @@ class StartController {
     getStart(req, res) {
         res.status(200).json({
             uptime: `${process.uptime()}`,
-            message: 'OK',
+            message: '☠️ Ruta no validad...',
             timestamp: `${Date.now()}`
         });
     }

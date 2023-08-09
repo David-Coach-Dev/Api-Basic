@@ -1,11 +1,10 @@
-import path from 'path';
 import swaggerUI from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
 import { SwaggerTheme } from "swagger-themes";
 
-
 const env = process.env.NODE_ENV;
 const theme = new SwaggerTheme("v3");
+const styleTheme = "dark";
 const serverUrl = env?.trim() === "production" ? 'https://api-basic.vercel.app/{basePath}' : 'http://localhost:8000/{basePath}';
 
 const swaggerConfig = {
@@ -55,7 +54,7 @@ const swaggerOptions = {
   docExpansion: 'list',
   filter: true,
   customSiteTitle: 'Api Rest Full Dynamic',
-  customCss: theme.getBuffer("dark") + '.swagger-ui .topbar {display: none;}',
+  customCss: theme.getBuffer(styleTheme) + '.swagger-ui .topbar {display: none;}',
   customCssUrl: "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css",
   customfavIcon: 'https://i.imgur.com/uKAkTHO.png',
 };
