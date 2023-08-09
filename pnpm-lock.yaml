@@ -76,6 +76,9 @@ devDependencies:
   '@vercel/node':
     specifier: ^2.15.8
     version: 2.15.8
+  chromatic:
+    specifier: 6.21.0
+    version: 6.21.0
   concurrently:
     specifier: ^8.2.0
     version: 8.2.0
@@ -1879,6 +1882,11 @@ packages:
       readdirp: 3.6.0
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /chromatic@6.21.0:
+    resolution: {integrity: sha512-Nnp28jrhk6T4z1izFXQZVRG9Uivq5ZWibRJ3f/SbHUzJuWb1otHFqbUMomrYm770ar8ByIF09Mx+5VEW+RDrug==}
+    hasBin: true
     dev: true
 
   /ci-info@3.8.0:
