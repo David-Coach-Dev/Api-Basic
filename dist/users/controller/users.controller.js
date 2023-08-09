@@ -4,7 +4,9 @@ exports.UsersController = void 0;
 class UsersController {
     getUsers(req, res) {
         res.status(200).json({
-            Msn: "Dc Dev"
+            uptime: `${process.uptime()}`,
+            data: { user: '👨‍💻 Dc Dev -> David Caoch Dev.' },
+            timestamp: `${Date.now()}`
         });
     }
 }

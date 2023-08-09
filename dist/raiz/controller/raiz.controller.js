@@ -10,7 +10,9 @@ class RaizController {
         const user = os_1.default.userInfo();
         console.log(user);
         res.status(200).json({
-            user: `Bienvenido ${user.username} a la Api Rest Full Dynamic.`
+            uptime: `${process.uptime()}`,
+            data: { msn: `Bienvenido ${user.username} a la Api Rest Full Dynamic.` },
+            timestamp: `${Date.now()}`,
         });
     }
 }
