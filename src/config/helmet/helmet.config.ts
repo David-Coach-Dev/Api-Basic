@@ -28,7 +28,7 @@ export const helmetConfig: HelmetOptions = {
     policy: "same-origin",
   },
   referrerPolicy: {
-    policy: ["origin", "unsafe-url"],
+    policy: ["origin", "unsafe-url", "no-referrer"],
   },
   strictTransportSecurity: {
     maxAge: 63072000,
