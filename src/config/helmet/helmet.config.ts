@@ -35,7 +35,7 @@ export const helmetConfig: HelmetOptions = {
     includeSubDomains: true,
     preload: true,
   },
-  xContentTypeOptions: true,
+  xContentTypeOptions: false,
   xDnsPrefetchControl: { allow: false },
   xDownloadOptions: false,
   xFrameOptions: { action: "sameorigin" },

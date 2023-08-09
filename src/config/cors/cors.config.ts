@@ -99,4 +99,5 @@ export const corsConfig: CorsOptions = {
   exposedHeaders: contentTypes,
   maxAge: 63072000,
   preflightContinue: false,
+  
 };
