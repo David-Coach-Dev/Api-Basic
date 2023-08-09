@@ -14,6 +14,7 @@ exports.helmetConfig = {
             scriptSrc: ["'self'", "'unsafe-inline'", 'https:', 'data:'],
             scriptSrcAttr: ["'none'"],
             styleSrc: ["'self'", 'https:', 'data:', "'unsafe-inline'"],
+            styleSrcElem: ["'self'", 'https:', 'data:', "'unsafe-inline'"],
             styleSrcExt: ["'self'", "'unsafe-inline'", 'https:', 'data:'],
             upgradeInsecureRequests: [],
         },

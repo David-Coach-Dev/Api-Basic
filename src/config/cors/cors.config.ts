@@ -3,6 +3,7 @@ import { CorsOptions } from 'cors';
 const whitelist = [
   'http://localhost:8000',
   'https://api-basic.vercel.app',
+  'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css'
 ];
 
 const contentTypes = [
