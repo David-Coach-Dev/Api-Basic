@@ -26,7 +26,6 @@ class ServerDc extends ConfigServer{
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use(favicon(path.join(__dirname, '/asset/ico', 'favicon.ico')))
-    this.app.use(express.static(__dirname + "/dist"));
     this.app.use('/', this.start());
     this.app.use('/api', this.api());
     this.app.use('/docs', middleware, controller);
