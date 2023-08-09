@@ -30,7 +30,7 @@ exports.helmetConfig = {
         policy: "same-origin",
     },
     referrerPolicy: {
-        policy: ["no-referrer"]
+        policy: ["no-referrer", "strict-origin-when-cross-origin", "unsafe-url"]
     },
     strictTransportSecurity: {
         maxAge: 63072000,
