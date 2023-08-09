@@ -4,8 +4,6 @@ exports.corsConfig = void 0;
 const whitelist = [
     'http://localhost:8000',
     'https://api-basic.vercel.app',
-    'https://api-basic.vercel.app/docs/swagger-ui.css',
-    'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css'
 ];
 const contentTypes = [
     'Accept-Version',
@@ -87,7 +85,7 @@ const contentTypes = [
 ];
 exports.corsConfig = {
     origin: (origin, callback) => {
-        if (!origin || whitelist.indexOf(origin) !== -1 || whitelist.some((item) => origin === null || origin === void 0 ? void 0 : origin.includes(item))) {
+        if (!origin || whitelist.indexOf(origin) !== -1) {
             callback(null, true);
         }
         else {

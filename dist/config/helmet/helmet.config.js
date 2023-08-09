@@ -21,7 +21,7 @@ exports.helmetConfig = {
         reportOnly: true,
     },
     crossOriginEmbedderPolicy: {
-        policy: "credentialless",
+        policy: "credentialless"
     },
     crossOriginOpenerPolicy: {
         policy: "same-origin-allow-popups"
@@ -30,7 +30,7 @@ exports.helmetConfig = {
         policy: "same-origin",
     },
     referrerPolicy: {
-        policy: ["origin", "unsafe-url", "no-referrer"],
+        policy: ["no-referrer"]
     },
     strictTransportSecurity: {
         maxAge: 63072000,
@@ -42,7 +42,7 @@ exports.helmetConfig = {
     xDownloadOptions: false,
     xFrameOptions: { action: "sameorigin" },
     xPermittedCrossDomainPolicies: {
-        permittedPolicies: "by-content-type",
+        permittedPolicies: "by-content-type"
     },
     xPoweredBy: false,
     xXssProtection: false,

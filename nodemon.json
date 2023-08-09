@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json.schemastore.org/nodemon",
+  "ignore": [
+    ".hl/",
+    ".vercel/",
+    "dist/",
+    "mysql/",
+    "node_modules/",
+    "response/",
+    "*.yaml",
+    "*.yml",
+    ".env",
+    ".prodiction.env",
+    "LICENSE",
+    "vercel-dev.json",
+    "vercel.json",
+    ".vercelignore"
+  ],
+  "events": {
+    "restart": "pnpm lint"
+  }
+}

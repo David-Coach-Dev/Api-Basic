@@ -52,13 +52,10 @@ const swaggerOptions = {
     explorer: true,
     swaggerUi: true,
     docExpansion: 'list',
-    validatorUrl: null,
     filter: true,
-    deepLinking: true,
     customSiteTitle: 'Api Rest Full Dynamic',
-    customFavIcon: 'dist/asset/ico/favicon.ico',
+    customfavIcon: 'dist/asset/ico/favicon.ico',
     customCss: '.swagger-ui .topbar {display: none;}',
-    customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css'
 };
 const config = (0, swagger_jsdoc_1.default)(swaggerConfig);
 exports.middleware = swagger_ui_express_1.default.serve;
