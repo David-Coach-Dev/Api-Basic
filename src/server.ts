@@ -26,7 +26,6 @@ class ServerDc extends ConfigServer{
     this.app.use(express.urlencoded({ extended: true }));
     this.app.use(express.json());
     this.app.use(favicon(path.join(__dirname, '/assets/ico', 'favicon.ico')))
-    this.app.use('/', this.start());
     this.app.use('/api', this.api());
     this.app.use('/docs', middleware, controller);
     this.app.use('*', this.start());
@@ -57,7 +56,7 @@ class ServerDc extends ConfigServer{
 
   public listen() {
     this.app.listen(this.port, () => {
-      console.log(`✅ Server 🆗 is running 💯 on http://localhost:${this.port}`);
+      console.log(`✅ Server 🆗 is running 💯 on http://localhost:${this.port}/docs`);
     })
   }
 
