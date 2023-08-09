@@ -10,7 +10,7 @@ import { StartRouter } from './start/router/start.router';
 import { UsersRouter } from './users/router/users.router';
 import { helmetConfig } from './config/helmet/helmet.config';
 import { corsConfig } from './config/cors/cors.config';
-const swagger = require('./config/swagger/swagger.config');
+const { middleware, controller  } = require('./config/swagger/swagger.config');
 const favicon = require('serve-favicon');
 const path = require('path');
 
@@ -29,7 +29,7 @@ class ServerDc extends ConfigServer{
     this.app.use(favicon(path.join(__dirname, '/asset/ico', 'favicon.ico')))
     this.app.use('/', this.start());
     this.app.use('/api', this.api());
-    this.app.use('/docs', swagger.middleware, swagger.controller);
+    this.app.use('/docs', middleware, controller);
     this.app.use('*', this.start());
     this.listen();
   }

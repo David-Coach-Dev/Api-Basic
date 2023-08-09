@@ -24,7 +24,7 @@ const start_router_1 = require("./start/router/start.router");
 const users_router_1 = require("./users/router/users.router");
 const helmet_config_1 = require("./config/helmet/helmet.config");
 const cors_config_1 = require("./config/cors/cors.config");
-const swagger = require('./config/swagger/swagger.config');
+const { middleware, controller } = require('./config/swagger/swagger.config');
 const favicon = require('serve-favicon');
 const path = require('path');
 class ServerDc extends server_config_1.ConfigServer {
@@ -41,7 +41,7 @@ class ServerDc extends server_config_1.ConfigServer {
         this.app.use(favicon(path.join(__dirname, '/asset/ico', 'favicon.ico')));
         this.app.use('/', this.start());
         this.app.use('/api', this.api());
-        this.app.use('/docs', swagger.middleware, swagger.controller);
+        this.app.use('/docs', middleware, controller);
         this.app.use('*', this.start());
         this.listen();
     }
