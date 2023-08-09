@@ -10,11 +10,11 @@ export const helmetConfig: HelmetOptions = {
       frameAncestors: ["'self'"],
       imgSrc: ["'self'","'unsafe-inline'", 'https:', 'data:'],
       objectSrc: ["'none'"],
-      scriptSrc: ["'self'"],
+      scriptSrc: ["'self'","'unsafe-inline'", 'https:', 'data:'],
       scriptSrcAttr: ["'none'"],
-      styleSrc: ["'self'", "'unsafe-inline'", "https:"],
-      styleSrcExt: ["'self'", "'unsafe-inline'", "https:"],
-      upgradeInsecureRequests: ["'self'"],
+      styleSrc: ["'self'", 'https:', 'data:', "'unsafe-inline'"],
+      styleSrcExt: ["'self'", "'unsafe-inline'", 'https:', 'data:'],
+      upgradeInsecureRequests: [],
     },
     reportOnly: true,
   },
@@ -25,7 +25,7 @@ export const helmetConfig: HelmetOptions = {
     policy: "same-origin-allow-popups"
   },
   crossOriginResourcePolicy: {
-    policy: "cross-origin",
+    policy: "same-origin",
   },
   referrerPolicy: {
     policy: ["origin", "unsafe-url"],

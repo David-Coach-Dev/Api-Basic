@@ -13,6 +13,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
+const path_1 = __importDefault(require("path"));
 const cors_1 = __importDefault(require("cors"));
 const helmet_1 = __importDefault(require("helmet"));
 const morgan_1 = __importDefault(require("morgan"));
@@ -24,25 +25,24 @@ const start_router_1 = require("./start/router/start.router");
 const users_router_1 = require("./users/router/users.router");
 const helmet_config_1 = require("./config/helmet/helmet.config");
 const cors_config_1 = require("./config/cors/cors.config");
-const { middleware, controller } = require('./config/swagger/swagger.config');
-const favicon = require('serve-favicon');
-const path = require('path');
+const swagger_config_1 = require("./config/swagger/swagger.config");
+const serve_favicon_1 = __importDefault(require("serve-favicon"));
 class ServerDc extends server_config_1.ConfigServer {
     constructor() {
         super();
         this.app = (0, express_1.default)();
         this.port = this.getNumberEnv('PORT');
-        this.app.use(express_1.default.json());
-        this.app.use(express_1.default.urlencoded({ extended: true }));
-        this.dbConnection();
         this.app.use((0, morgan_1.default)('dev'));
         this.app.use((0, helmet_1.default)(helmet_config_1.helmetConfig));
         this.app.use((0, cors_1.default)(cors_config_1.corsConfig));
-        this.app.use(favicon(path.join(__dirname, '/asset/ico', 'favicon.ico')));
+        this.app.use(express_1.default.urlencoded({ extended: true }));
+        this.app.use(express_1.default.json());
+        this.app.use((0, serve_favicon_1.default)(path_1.default.join(__dirname, '/asset/ico', 'favicon.ico')));
         this.app.use('/', this.start());
         this.app.use('/api', this.api());
-        this.app.use('/docs', middleware, controller);
+        this.app.use('/docs', swagger_config_1.middleware, swagger_config_1.controller);
         this.app.use('*', this.start());
+        this.dbConnection();
         this.listen();
     }
     api() {

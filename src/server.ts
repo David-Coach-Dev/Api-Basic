@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
@@ -10,9 +11,8 @@ import { StartRouter } from './start/router/start.router';
 import { UsersRouter } from './users/router/users.router';
 import { helmetConfig } from './config/helmet/helmet.config';
 import { corsConfig } from './config/cors/cors.config';
-const { middleware, controller  } = require('./config/swagger/swagger.config');
-const favicon = require('serve-favicon');
-const path = require('path');
+import { middleware, controller } from './config/swagger/swagger.config';
+import favicon from 'serve-favicon';
 
 class ServerDc extends ConfigServer{
   public app: express.Application = express();
@@ -20,17 +20,17 @@ class ServerDc extends ConfigServer{
 
   constructor() {
     super();
-    this.app.use(express.json());
-    this.app.use(express.urlencoded({ extended: true }));
-    this.dbConnection();
     this.app.use(morgan('dev'));
     this.app.use(helmet(helmetConfig));
     this.app.use(cors(corsConfig));
+    this.app.use(express.urlencoded({ extended: true }));
+    this.app.use(express.json());
     this.app.use(favicon(path.join(__dirname, '/asset/ico', 'favicon.ico')))
     this.app.use('/', this.start());
     this.app.use('/api', this.api());
     this.app.use('/docs', middleware, controller);
     this.app.use('*', this.start());
+    this.dbConnection();
     this.listen();
   }
 

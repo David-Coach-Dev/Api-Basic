@@ -1,7 +1,11 @@
 "use strict";
-const swaggerUI = require('swagger-ui-express');
-const swaggerJsDoc = require('swagger-jsdoc');
-const projectInfo = require('../../../package.json');
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.controller = exports.middleware = void 0;
+const swagger_ui_express_1 = __importDefault(require("swagger-ui-express"));
+const swagger_jsdoc_1 = __importDefault(require("swagger-jsdoc"));
 const env = process.env.NODE_ENV;
 const serverUrl = (env === null || env === void 0 ? void 0 : env.trim()) === "production" ? 'https://api-basic.vercel.app/{basePath}' : 'http://localhost:8000/{basePath}';
 const swaggerConfig = {
@@ -14,15 +18,15 @@ const swaggerConfig = {
             description: 'Sistema De Manejo de Equipos - Sismadeq - Api Rest Full Dynamic based on the OpenAPI 3.0 Specification (OAS3). <br /><br />By',
             termsOfService: 'http://swagger.io/terms/',
             contact: {
-                name: projectInfo.author.name,
-                url: projectInfo.author.url,
-                email: projectInfo.author.email
+                name: 'Dc Dev -> David Coach Dev',
+                url: 'https://www.linkedin.com/in/dcdevtk/',
+                email: 'dcdevtk@gmail.com'
             },
             license: {
-                name: projectInfo.license,
+                name: 'MIT',
                 url: 'https://opensource.org/license/mit/'
             },
-            version: projectInfo.version,
+            version: '1.0.0',
         },
         servers: [
             {
@@ -56,8 +60,7 @@ const swaggerOptions = {
     customCss: '.swagger-ui .topbar {display: none;}',
     customCssUrl: 'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.min.css'
 };
-const config = swaggerJsDoc(swaggerConfig);
-const middleware = swaggerUI.serve;
-const controller = swaggerUI.setup(config, swaggerOptions);
-module.exports = { middleware, controller };
+const config = (0, swagger_jsdoc_1.default)(swaggerConfig);
+exports.middleware = swagger_ui_express_1.default.serve;
+exports.controller = swagger_ui_express_1.default.setup(config, swaggerOptions);
 //# sourceMappingURL=swagger.config.js.map

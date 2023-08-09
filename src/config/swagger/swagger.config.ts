@@ -1,6 +1,5 @@
-const swaggerUI = require('swagger-ui-express');
-const swaggerJsDoc = require('swagger-jsdoc');
-const projectInfo = require('../../../package.json');
+import swaggerUI from 'swagger-ui-express';
+import swaggerJsDoc from 'swagger-jsdoc';
 const env = process.env.NODE_ENV;
 
 const serverUrl = env?.trim() === "production" ? 'https://api-basic.vercel.app/{basePath}' : 'http://localhost:8000/{basePath}';
@@ -15,15 +14,15 @@ const swaggerConfig = {
       description: 'Sistema De Manejo de Equipos - Sismadeq - Api Rest Full Dynamic based on the OpenAPI 3.0 Specification (OAS3). <br /><br />By',
       termsOfService: 'http://swagger.io/terms/',
       contact: {
-        name: projectInfo.author.name,
-        url: projectInfo.author.url,
-        email: projectInfo.author.email
+        name: 'Dc Dev -> David Coach Dev',
+        url: 'https://www.linkedin.com/in/dcdevtk/',
+        email: 'dcdevtk@gmail.com'
       },
       license: {
-        name: projectInfo.license,
+        name:'MIT',
         url: 'https://opensource.org/license/mit/'
       },
-      version: projectInfo.version,
+      version: '1.0.0',
     },
     servers: [
       {
@@ -60,7 +59,5 @@ const swaggerOptions = {
 };
 
 const config = swaggerJsDoc(swaggerConfig);
-const middleware = swaggerUI.serve;
-const controller = swaggerUI.setup(config, swaggerOptions);
-
-module.exports = { middleware, controller };
+export const middleware = swaggerUI.serve;
+export const controller = swaggerUI.setup(config, swaggerOptions);
