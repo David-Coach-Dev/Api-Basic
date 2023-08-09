@@ -42,6 +42,7 @@ const contentTypes = [
     'image/jpeg',
     'image/png',
     'image/svg+xml; charset=utf-8',
+    'image/svg+xml',
     'image/tiff',
     'image/x-icon',
     'multipart/form-data',
