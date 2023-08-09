@@ -6,7 +6,7 @@
   "main": "./dist/server.js",
   "scripts": {
     "start": "node dist/server.js && echo \"✅ Proceso realizado con éxito.\"",
-    "bdist": "clear && rmdir /s dist && echo \"🔍 Clearing...\" && echo \"✅ Borrado realizado con éxito.\" && pnpm build && echo \"🔍 Actualizando Assets...\" && cp -r src/asset dist && echo \"✅ Actualizo Asset.\"",
+    "bdist": "clear && rmdir /s dist && echo \"🔍 Clearing...\" && echo \"✅ Borrado realizado con éxito.\" && pnpm build && echo \"🔍 Actualizando Assets...\" && cp -r src/assets dist && echo \"✅ Actualizo Assets.\"",
     "build": "echo \"🔍 Building...\" && tsc && echo \"✅ Build realizado con éxito.\"",
     "dev": "tsc && concurrently \"tsc -w\" \"nodemon server.js\"",
     "watch": "tsc && concurrently \"tsc -w\" \"node --watch dist/server.js\"",

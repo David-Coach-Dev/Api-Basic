@@ -37,7 +37,7 @@ class ServerDc extends server_config_1.ConfigServer {
         this.app.use((0, cors_1.default)(cors_config_1.corsConfig));
         this.app.use(express_1.default.urlencoded({ extended: true }));
         this.app.use(express_1.default.json());
-        this.app.use((0, serve_favicon_1.default)(path_1.default.join(__dirname, '/asset/ico', 'favicon.ico')));
+        this.app.use((0, serve_favicon_1.default)(path_1.default.join(__dirname, '/assets/ico', 'favicon.ico')));
         this.app.use('/', this.start());
         this.app.use('/api', this.api());
         this.app.use('/docs', swagger_config_1.middleware, swagger_config_1.controller);

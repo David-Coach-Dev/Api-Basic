@@ -12,6 +12,9 @@ const swaggerConfig = {
       title: 'Sismadeq - Api Rest Full Dynamic.',
       summary: "Un Sistema De Manejo de Equipos.",
       description: 'Sistema De Manejo de Equipos - Sismadeq - Api Rest Full Dynamic based on the OpenAPI 3.0 Specification (OAS3). <br /><br />By',
+      main:  [
+        "dist/assets/css/SwaggerDark.css",
+      ],
       termsOfService: 'http://swagger.io/terms/',
       contact: {
         name: 'Dc Dev -> David Coach Dev',
@@ -51,8 +54,9 @@ const swaggerOptions = {
   docExpansion: 'list',
   filter: true,
   customSiteTitle: 'Api Rest Full Dynamic',
-  customfavIcon: 'dist/asset/ico/favicon.ico',
   customCss: '.swagger-ui .topbar {display: none;}',
+  customCssUrl: "dist/assets/css/SwaggerDark.css",
+  customfavIcon: "dist/assets/ico/favicon.ico"
 };
 
 const config = swaggerJsDoc(swaggerConfig);
