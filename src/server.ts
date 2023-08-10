@@ -13,6 +13,7 @@ import { helmetConfig } from './config/helmet/helmet.config';
 import { corsConfig } from './config/cors/cors.config';
 import { middleware, controller } from './config/swagger/swagger.config';
 import favicon from 'serve-favicon';
+import cron from 'node-cron';
 
 class ServerDc extends ConfigServer{
   public app: express.Application = express();
@@ -31,6 +32,7 @@ class ServerDc extends ConfigServer{
     this.app.use('*', this.start());
     this.dbConnection();
     this.listen();
+    this.corn();
   }
 
   api(): Array<express.Router> {
@@ -43,6 +45,12 @@ class ServerDc extends ConfigServer{
     return [
       new StartRouter().router,
     ];
+  }
+  corn(): void{
+    cron.schedule('53 0 * * *', () => {
+      console.log('cron');
+      this.start();
+    });
   }
 
   async dbConnection(): Promise<void> {
@@ -63,3 +71,7 @@ class ServerDc extends ConfigServer{
 }
 
 const server = new ServerDc();
+function parseurl(req: any) {
+  throw new Error('Function not implemented.');
+}
+

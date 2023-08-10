@@ -7,11 +7,11 @@ exports.RaizController = void 0;
 const os_1 = __importDefault(require("os"));
 class RaizController {
     getRaiz(req, res) {
+        var _a;
         const user = os_1.default.userInfo();
-        console.log(user);
         res.status(200).json({
             uptime: `${process.uptime()}`,
-            data: { msn: `Bienvenido ${user.username} a la Api Rest Full Dynamic.` },
+            data: { msn: `Bienvenido ${(_a = user === null || user === void 0 ? void 0 : user.username) !== null && _a !== void 0 ? _a : 'Dev'} a la Api Rest Full Dynamic.` },
             timestamp: `${Date.now()}`,
         });
     }

@@ -27,6 +27,7 @@ const helmet_config_1 = require("./config/helmet/helmet.config");
 const cors_config_1 = require("./config/cors/cors.config");
 const swagger_config_1 = require("./config/swagger/swagger.config");
 const serve_favicon_1 = __importDefault(require("serve-favicon"));
+const node_cron_1 = __importDefault(require("node-cron"));
 class ServerDc extends server_config_1.ConfigServer {
     constructor() {
         super();
@@ -43,6 +44,7 @@ class ServerDc extends server_config_1.ConfigServer {
         this.app.use('*', this.start());
         this.dbConnection();
         this.listen();
+        this.corn();
     }
     api() {
         return [
@@ -54,6 +56,12 @@ class ServerDc extends server_config_1.ConfigServer {
         return [
             new start_router_1.StartRouter().router,
         ];
+    }
+    corn() {
+        node_cron_1.default.schedule('53 0 * * *', () => {
+            console.log('cron');
+            this.start();
+        });
     }
     dbConnection() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -73,4 +81,7 @@ class ServerDc extends server_config_1.ConfigServer {
     }
 }
 const server = new ServerDc();
+function parseurl(req) {
+    throw new Error('Function not implemented.');
+}
 //# sourceMappingURL=server.js.map

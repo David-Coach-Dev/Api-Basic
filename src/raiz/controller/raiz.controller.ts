@@ -1,14 +1,14 @@
-import { Request, Response } from "express";
 import os from "os";
+import { Request, Response } from "express";
 
 export class RaizController {
   getRaiz(req: Request, res: Response) {
     const user = os.userInfo();
-    console.log(user);
     res.status(200).json({
       uptime: `${process.uptime()}`,
-      data:{ msn: `Bienvenido ${user.username} a la Api Rest Full Dynamic.`},
+      data:{ msn: `Bienvenido ${user?.username ?? 'Dev'} a la Api Rest Full Dynamic.`},
       timestamp: `${Date.now()}`,
     });
   }
+
 }

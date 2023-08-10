@@ -9,25 +9,25 @@ dependencies:
     specifier: ^0.14.0
     version: 0.14.0
   cors:
-    specifier: ^2.8.5
+    specifier: 2.8.5
     version: 2.8.5
   dotenv:
-    specifier: ^16.3.1
+    specifier: 16.3.1
     version: 16.3.1
   express:
-    specifier: ^4.18.2
+    specifier: 4.18.2
     version: 4.18.2
   helmet:
-    specifier: ^7.0.0
+    specifier: 7.0.0
     version: 7.0.0
   mysql:
-    specifier: ^2.18.1
+    specifier: 2.18.1
     version: 2.18.1
   reflect-metadata:
-    specifier: ^0.1.13
+    specifier: 0.1.13
     version: 0.1.13
   serve-favicon:
-    specifier: ^2.5.0
+    specifier: 2.5.0
     version: 2.5.0
   swagger-jsdoc:
     specifier: 6.2.8
@@ -36,7 +36,7 @@ dependencies:
     specifier: 4.6.3
     version: 4.6.3(express@4.18.2)
   typeorm:
-    specifier: ^0.3.17
+    specifier: 0.3.17
     version: 0.3.17
   typeorm-naming-strategies:
     specifier: ^4.1.0
@@ -44,20 +44,23 @@ dependencies:
 
 devDependencies:
   '@types/cors':
-    specifier: ^2.8.13
+    specifier: 2.8.13
     version: 2.8.13
   '@types/express':
     specifier: ^4.17.17
     version: 4.17.17
   '@types/jest':
-    specifier: ^29.5.3
+    specifier: 29.5.3
     version: 29.5.3
   '@types/morgan':
     specifier: ^1.9.4
     version: 1.9.4
   '@types/node':
-    specifier: ^20.4.7
+    specifier: 20.4.7
     version: 20.4.7
+  '@types/node-cron':
+    specifier: 3.0.8
+    version: 3.0.8
   '@types/serve-favicon':
     specifier: ^2.5.4
     version: 2.5.4
@@ -86,37 +89,40 @@ devDependencies:
     specifier: ^8.46.0
     version: 8.46.0
   eslint-config-standard-with-typescript:
-    specifier: ^37.0.0
+    specifier: 37.0.0
     version: 37.0.0(@typescript-eslint/eslint-plugin@5.52.0)(eslint-plugin-import@2.28.0)(eslint-plugin-n@16.0.1)(eslint-plugin-promise@6.1.1)(eslint@8.46.0)(typescript@5.1.6)
   eslint-plugin-import:
-    specifier: ^2.28.0
+    specifier: 2.28.0
     version: 2.28.0(@typescript-eslint/parser@5.0.0)(eslint@8.46.0)
   eslint-plugin-n:
-    specifier: ^16.0.1
+    specifier: 16.0.1
     version: 16.0.1(eslint@8.46.0)
   eslint-plugin-promise:
-    specifier: ^6.1.1
+    specifier: 6.1.1
     version: 6.1.1(eslint@8.46.0)
   jest:
-    specifier: ^29.6.2
+    specifier: 29.6.2
     version: 29.6.2(@types/node@20.4.7)
   morgan:
-    specifier: ^1.10.0
+    specifier: 1.10.0
     version: 1.10.0
+  node-cron:
+    specifier: 3.0.2
+    version: 3.0.2
   nodemon:
-    specifier: ^3.0.1
+    specifier: 3.0.1
     version: 3.0.1
   pre-commit:
-    specifier: ^1.2.2
+    specifier: 1.2.2
     version: 1.2.2
   rimraf:
-    specifier: ^5.0.1
+    specifier: 5.0.1
     version: 5.0.1
   swagger-themes:
     specifier: 1.2.30
     version: 1.2.30
   typescript:
-    specifier: ^5.1.6
+    specifier: 5.1.6
     version: 5.1.6
 
 packages:
@@ -1089,6 +1095,10 @@ packages:
     resolution: {integrity: sha512-cXoc4k+6+YAllH3ZHmx4hf7La1dzUk6keTR4bF4b4Sc0mZxU/zK4wO7l+ZzezXm/jkYj/qC+uYGZrarZdIVvyQ==}
     dependencies:
       '@types/node': 20.4.7
+    dev: true
+
+  /@types/node-cron@3.0.8:
+    resolution: {integrity: sha512-+z5VrCvLwiJUohbRSgHdyZnHzAaLuD/E2bBANw+NQ1l05Crj8dIxb/kKK+OEqRitV2Wr/LYLuEBenGDsHZVV5Q==}
     dev: true
 
   /@types/node-fetch@2.6.3:
@@ -2591,7 +2601,7 @@ packages:
     dependencies:
       debug: 3.2.7(supports-color@5.5.0)
       is-core-module: 2.12.1
-      resolve: 1.22.2
+      resolve: 1.22.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -2685,7 +2695,7 @@ packages:
       ignore: 5.2.4
       is-core-module: 2.12.1
       minimatch: 3.1.2
-      resolve: 1.22.2
+      resolve: 1.22.3
       semver: 7.5.4
     dev: true
 
@@ -3789,7 +3799,7 @@ packages:
       jest-pnp-resolver: 1.2.3(jest-resolve@29.6.2)
       jest-util: 29.6.2
       jest-validate: 29.6.2
-      resolve: 1.22.2
+      resolve: 1.22.3
       resolve.exports: 2.0.2
       slash: 3.0.0
     dev: true
@@ -4265,6 +4275,13 @@ packages:
     resolution: {integrity: sha512-+EUsqGPLsM+j/zdChZjsnX51g4XrHFOIXwfnCVPGlQk/k5giakcKsuxCObBRu6DSm9opw/O6slWbJdghQM4bBg==}
     engines: {node: '>= 0.6'}
     dev: false
+
+  /node-cron@3.0.2:
+    resolution: {integrity: sha512-iP8l0yGlNpE0e6q1o185yOApANRe47UPbLf4YxfbiNHt/RU5eBcGB/e0oudruheSf+LQeDMezqC5BVAb5wwRcQ==}
+    engines: {node: '>=6.0.0'}
+    dependencies:
+      uuid: 8.3.2
+    dev: true
 
   /node-fetch@2.6.9:
     resolution: {integrity: sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==}
@@ -4744,15 +4761,6 @@ packages:
   /resolve.exports@2.0.2:
     resolution: {integrity: sha512-X2UW6Nw3n/aMgDVy+0rSqgHlv39WZAlZrXCdnbyEiKm17DSqHX4MmQMaST3FbeWR5FTuRcUwYAziZajji0Y7mg==}
     engines: {node: '>=10'}
-    dev: true
-
-  /resolve@1.22.2:
-    resolution: {integrity: sha512-Sb+mjNHOULsBv818T40qSPeRiuWLyaGMa5ewydRLFimneixmVy2zdivRl+AF6jaYPC8ERxGDmFSiqui6SfPd+g==}
-    hasBin: true
-    dependencies:
-      is-core-module: 2.12.1
-      path-parse: 1.0.7
-      supports-preserve-symlinks-flag: 1.0.0
     dev: true
 
   /resolve@1.22.3:
@@ -5512,6 +5520,11 @@ packages:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
     engines: {node: '>= 0.4.0'}
     dev: false
+
+  /uuid@8.3.2:
+    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
+    hasBin: true
+    dev: true
 
   /uuid@9.0.0:
     resolution: {integrity: sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==}
