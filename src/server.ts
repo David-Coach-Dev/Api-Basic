@@ -71,7 +71,3 @@ class ServerDc extends ConfigServer{
 }
 
 const server = new ServerDc();
-function parseurl(req: any) {
-  throw new Error('Function not implemented.');
-}
-

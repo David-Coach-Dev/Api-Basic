@@ -6,7 +6,10 @@ export class RaizController {
     const user = os.userInfo();
     res.status(200).json({
       uptime: `${process.uptime()}`,
-      data:{ msn: `Bienvenido ${user?.username ?? 'Dev'} a la Api Rest Full Dynamic.`},
+      count: 1,
+      status: 200,
+      success: true,
+      data: { msn: `Bienvenido ${user?.username ?? 'Dev'} a la Api Rest Full Dynamic.` },
       timestamp: `${Date.now()}`,
     });
   }
