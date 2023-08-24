@@ -11,6 +11,9 @@ class RaizController {
         const user = os_1.default.userInfo();
         res.status(200).json({
             uptime: `${process.uptime()}`,
+            count: 1,
+            status: 200,
+            success: true,
             data: { msn: `Bienvenido ${(_a = user === null || user === void 0 ? void 0 : user.username) !== null && _a !== void 0 ? _a : 'Dev'} a la Api Rest Full Dynamic.` },
             timestamp: `${Date.now()}`,
         });
